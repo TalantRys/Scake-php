@@ -1,0 +1,241 @@
+footer {
+  background-color: #6d6875;
+  color: #fff;
+}
+
+footer p,
+footer a {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.045em;
+}
+
+.footer__left,
+.footer__right {
+  display: flex;
+  align-items: center;
+}
+
+.footer__left {
+  flex: 0 1 625px;
+  justify-content: space-between;
+}
+
+.footer__right {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.footer__down {
+  text-align: center;
+}
+.footer__down_container hr{
+  height: 1px;
+}
+.footer__logo,
+.footer__link {
+  color: #fff;
+}
+
+.footer__logo {
+  font-family: "SeoulHangang CBL", serif;
+  font-size: 36px;
+  line-height: 36px;
+  letter-spacing: 0.105em;
+}
+.footer__logo:hover{
+  text-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
+}
+.footer__copyright {
+  padding: 15px 0;
+}
+
+.footer__title {
+  margin-bottom: 17px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.footer__list {
+  list-style: none;
+}
+
+/* .footer__list:not(:last-child) {
+  margin: 0 105px 0 0;
+} */
+
+.footer__list li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.footer__links {
+  display: flex;
+}
+
+.footer__links ul {
+  list-style: none;
+  margin-right: 30px;
+}
+.footer__links ul:last-child {
+  margin-right: 0;
+}
+.footer__link {
+  line-height: 17px;
+  letter-spacing: 0.045em;
+}
+.footer__logo,.footer__link{
+  transition: all .3s ease;
+}
+.footer__logo:hover,.footer__link:hover{
+  color: #FFB4A2;
+}
+.footer__block {
+  display: flex;
+}
+
+.footer__social {
+  margin-right: 58px;
+}
+.footer__social a:not(:last-child){
+  margin-right: 10px;
+}
+.social__title {
+  margin-bottom: 6px;
+}
+
+.pay__title {
+  margin-bottom: 10px;
+}
+
+.footer__address {
+  margin-top: 11px;
+}
+
+.social__block,
+.pay__block {
+  display: flex;
+  align-items: center;
+}
+
+.social__block img:not(:last-child),
+.pay__block img:not(:last-child) {
+  margin-right: 10px;
+}
+.footer__burger{
+  display: none;
+}
+@media (max-width:1200px) {
+  
+}
+@media (max-width:1160px) {
+  .footer__container{
+    flex-direction: column;
+  }
+  .footer__left{
+    flex: none;
+    width: 70%;
+    margin: 0 auto 30px;
+  }
+  .footer__right{
+    align-items: center;
+  }
+}
+@media (max-width:992px) {
+    
+}
+@media (max-width:767px) {
+  .footer__logo{
+    font-size: 30px;
+  }
+  .footer__left{
+    width: 100%;
+  }
+}
+@media (max-width:575px) {
+  .footer__left{
+    flex-direction: column;
+    margin: 0 0 20px 0;
+  }
+  .footer__left>*:not(:last-child){
+    margin-bottom: 20px;
+  }
+  .footer__links{
+    flex-direction: column;
+  }
+  .footer__links ul:not(:last-child){
+    margin:0 0 20px 0;
+  }
+  .footer__block{
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer__block>*:not(:last-child){
+    margin: 0 0 20px 0;
+  }
+  .footer__social{
+    margin: 0;
+  }
+  .social__title, .pay__title{
+    text-align: center;
+  }
+  .social__block, .pay__block{
+    justify-content: center;
+  }
+  .footer__address{
+    margin: 20px 0 0 0;
+  }
+  .footer__list{
+    display: none;
+  }
+  .footer__burger{
+    display:block;
+    width:100%;
+    overflow:hidden;
+  }
+  .footer__burger ul{
+    list-style: none;
+  }
+  .footer__burger li{
+    margin-bottom: 20px;
+  }
+  .footer__burger ul:last-child li:last-child{
+    margin: 0;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::-moz-list-bullet{list-style-type:none;}
+  summary::marker{display:none;} 
+  summary {
+     display:block;
+     font-size:1.4em;
+     cursor: pointer;
+     position: relative;
+  }
+  summary:before {  
+    right: 0;
+    background-color: white;
+    -webkit-mask: url("../images/icons/bottom-arrow.svg") center / 100% no-repeat;
+    mask: url("../images/icons/bottom-arrow.svg") center / 100% no-repeat;
+    width: 24px;
+    height: 24px;  
+    content: "";
+    position: absolute;
+    transition: transform .5s;
+  }
+  details[open] > summary:before {
+    transform: rotate(180deg);
+  }
+  details[open] summary ~ *{ 
+    animation: sweep .3s alternate ease;
+  }
+  @keyframes sweep {
+    0%    {opacity: 0;}
+    100%  {opacity: 1;}
+  }
+}
+@media (max-width:424px) {
+  .footer__address{
+    font-size: 12px;
+  }
+}

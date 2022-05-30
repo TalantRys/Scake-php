@@ -1,0 +1,74 @@
+@import url(font.css);
+@import url(slider.css);
+@import url(header.css);
+@import url(main.css);
+@import url(footer.css);
+:root{
+  --color-FFCDB2: var(#FFCDB2);
+  --color-FFB4A2: var(#FFB4A2);
+  --color-E5989B: var(#E5989B);
+  --color-B5838D: var(#B5838D);
+  --color-6D6875: var(#6D6875);
+  --color-3C4043: var(#3C4043);
+}
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Montserrat, serif;
+  font-size: 18px;
+  letter-spacing: 0.045em;
+}
+a,button{
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    letter-spacing: inherit;
+}
+html, body {
+  height: 100%;
+  background-color: #FFCDB2;
+}
+.wrapper{
+  display: flex;
+  flex-direction: column;
+    min-height: 100%;
+}
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  box-sizing: content-box;
+  padding: 0 10px;
+}
+.header__container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.main__container{
+}
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 10px;
+}
+
+.footer__down_container {
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+@media (max-width:926px) {
+  .header__container{
+      height: 70px;
+  }
+}
+@media (max-width:767px) {
+  .header__container{
+    height: 50px;
+  }
+}
