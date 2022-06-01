@@ -63,12 +63,12 @@
     transform: scale(1.1);
 }
 .slider__icon{}
-.slider__controls{
+.slider__controls, .slider__all-dots{
     display: flex;
     align-items: center;
 }
-.slider__controls>*:not(:last-child){
-    margin: 0 10px 0 0;
+.slider__controls>*:not(:last-child), .slider__all-dots>*:not(:last-child){
+    margin: 0 15px 0 0;
 }
 .slider__arrow{
     background-color: #FFB4A2;

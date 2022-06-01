@@ -181,8 +181,6 @@ main>*{
 }
 .about__title {
 }
-.title {
-}
 .about__text {
     flex: 1 1 auto;
     text-align: justify;

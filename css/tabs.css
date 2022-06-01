@@ -1,0 +1,36 @@
+.box{
+    width: 600px;
+    border: 1px solid black;
+}
+.box__input {
+    border-bottom: 1px solid black;
+}
+.box__nav{
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.box__radiobutton {
+    display: none;
+}
+.box__label {
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+.box__text {
+    font-weight: bold;
+}
+.box__list {
+    padding: 5px;
+    text-align: justify;
+    display: none;
+}
+#radio_first:checked ~ .box__list-1,
+#radio_second:checked ~ .box__list-2 {
+    display: block;
+}
+#radio_first:checked ~ .box__nav .label_first,
+#radio_second:checked ~ .box__nav .label_second{
+    background-color: blue;
+    color: white;
+}

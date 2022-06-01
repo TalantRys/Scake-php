@@ -1,0 +1,8 @@
+main.cakes {
+    flex: 1 1 auto;
+    color: #3C4043;
+    padding: 220px 0 0 0;
+}
+main.cakes>*{
+    margin: 0 0 120px 0;
+}
