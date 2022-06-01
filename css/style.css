@@ -3,6 +3,7 @@
 @import url(header.css);
 @import url(main.css);
 @import url(footer.css);
+@import url(about-main.css);
 :root{
   --color-FFCDB2: var(#FFCDB2);
   --color-FFB4A2: var(#FFB4A2);
@@ -34,7 +35,7 @@ html, body {
 .wrapper{
   display: flex;
   flex-direction: column;
-    min-height: 100%;
+  min-height: 100vh;
 }
 .container {
   max-width: 1240px;

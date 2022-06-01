@@ -8,7 +8,7 @@ function loadItems() {
         let out = '';
         for (let key in data) {
             out += '<span class="products__card card">';
-            out += '<div class="card__image">';
+            out += '<div class="card__image image">';
             out += '<img src="' + data[key].image + '" alt="' + data[key]['image'] + '">';
             out += '</div>';
             out += '<h3 class="card__title title">' + data[key]['name'] + '</h3>';
