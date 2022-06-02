@@ -1,36 +1,40 @@
-.box{
-    width: 600px;
-    border: 1px solid black;
+.cakes__box{
 }
 .box__input {
     border-bottom: 1px solid black;
 }
 .box__nav{
     display: flex;
-    border-bottom: 1px solid black;
+    justify-content: center;
+    margin-bottom: 50px;
+    
 }
 .box__radiobutton {
     display: none;
 }
 .box__label {
-    width: 50%;
+    width: 20%;
     text-align: center;
     padding: 10px;
+    transition: all .3s ease;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.25);
 }
 .box__text {
-    font-weight: bold;
+    font-size: 24px;
+    line-height: calc(29/22*100%);
 }
-.box__list {
-    padding: 5px;
-    text-align: justify;
+.products__cards.box__list-1, .products__cards.box__list-2{
     display: none;
+    opacity: 0;
+    transition: opacity .3s ease;
 }
 #radio_first:checked ~ .box__list-1,
 #radio_second:checked ~ .box__list-2 {
-    display: block;
+    display: flex;
+    opacity: 1;
 }
 #radio_first:checked ~ .box__nav .label_first,
 #radio_second:checked ~ .box__nav .label_second{
-    background-color: blue;
-    color: white;
+    font-weight: bold;
+    border-bottom: 5px solid rgba(0, 0, 0);
 }

@@ -38,7 +38,7 @@ var sliderNav = function (manual) {
     dot.classList.remove('active');
   });
   dots[manual].classList.add('active');
-  sliderImage.forEach((slides)=>{
+  sliderImage.forEach((slides) =>{
     slides.classList.remove('active');
   });
   sliderImage[manual].classList.add('active');
@@ -62,19 +62,19 @@ $(document).ready(function () {
 });
 // АККОРДЕОН
 var details = document.querySelectorAll("details");
-for (i = 0; i < details.length; i++) {
-  details[i].addEventListener("toggle", accordion);
+for (q = 0; q < details.length; q++) {
+  details[q].addEventListener("toggle", accordion);
 }
 function accordion(event) {
   if (!event.target.open) return;
   var details = event.target.parentNode.children;
-  for (i = 0; i < details.length; i++) {
-    if (details[i].tagName != "DETAILS" ||
-      !details[i].hasAttribute('open') ||
-      event.target == details[i]) {
+  for (q = 0; q < details.length; q++) {
+    if (details[q].tagName != "DETAILS" ||
+      !details[q].hasAttribute('open') ||
+      event.target == details[q]) {
       continue;
     }
-    details[i].removeAttribute("open");
+    details[q].removeAttribute("open");
   }
 }
 

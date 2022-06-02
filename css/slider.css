@@ -49,7 +49,7 @@
 .slider__subtitle {
     font-size: 18px;
 }
-.slider__button{
+.main__slider .slider__button{
     transition: transform .3s ease;
 }
 .slider__button span{
