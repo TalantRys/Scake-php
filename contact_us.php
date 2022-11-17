@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <? include 'vendor/components/head-link.php' ?>
+</head>
+
+<body>
+    <div class="wrapper">
+        <? include "vendor/components/header.php" ?>
+        <main class="contact-us">
+            <section class="contact-us__questions">
+                <div class="contact-us__container container">
+                    <div class="contact-us__image image">
+                        <img src="images/contact-form.jpg" alt="contact-form.jpg">
+                    </div>
+                    <h2 class="contact-us__title title">У вас возникли вопросы?</h2>
+                    <h3 class="contact-us__subtitle subtitle">Вы можете заполнить форму обратной связи <br> и мы ответим
+                        вам
+                        как можно быстрее.</h3>
+                        <div class="contact-us__fields">
+                            <form class="contact-us__form" action="" method="post">
+                                <div class="contact-us__inputs">
+                                    <input type="text" name="name" placeholder="Ваше имя" class="contact-us__input">
+                                    <input type="email" name="email" placeholder="Ваш email" class="contact-us__input">
+                                    <input type="tel" name="number" placeholder="Ваш номер телефона" class="contact-us__input">
+                                </div>
+                                <textarea name="message" placeholder="Ваше сообщение" class="contact-us__input contact-us__input_message"></textarea>
+                                <div class="contact-us__bottom">
+                                    <input type="submit" name="submit" placeholder="Отправить" class="contact-us__input">
+                                    <div class="contact-us__note"></div>
+                                <p>Мы отвечаем через 1-2 дня. Спасибо за ожидание!</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section class="contact-us__contacts">
+                <div class="contacts__container container">
+                    <div class="contacts__block">
+                        <h2 class="contacts__title title">Scake</h2>
+                        <h2 class="contacts__title title">Контакты</h2>
+                        <a href="tel:+73812999999" class="contacts__link">+7-3812-99-99-99</a>
+                        <a href="mailto:scake@mail.ru" class="contacts__link">scake@mail.ru</a>
+                        <h2 class="contacts__title title">Адрес</h2>
+                        <a href="https://goo.gl/maps/wAKR8CVkWjopCtsz8" target="_blank" class="contacts__link">
+                            г. Омск,<br>ул. просп. Карла Маркса, 10
+                        </a>
+                    </div>
+                    <iframe class="contact-us__map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2289.9827929926805!2d73.37730933541727!3d54.97340091750835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43aafdfd83a3a4e9%3A0xd1a0baeed4b93bdc!2z0J_RgNC-0LLQuNCw0L3Rgg!5e0!3m2!1sru!2sru!4v1657441368918!5m2!1sru!2sru" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+        </main>
+        <? include "vendor/components/footer.php" ?>
+    </div>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="js/contact-form.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -62,10 +62,6 @@ footer a {
   list-style: none;
 }
 
-/* .footer__list:not(:last-child) {
-  margin: 0 105px 0 0;
-} */
-
 .footer__list li:not(:last-child) {
   margin-bottom: 20px;
 }
@@ -85,10 +81,10 @@ footer a {
   line-height: 17px;
   letter-spacing: 0.045em;
 }
-.footer__logo,.footer__link{
+.footer__logo,.footer__link,.footer__address{
   transition: all .3s ease;
 }
-.footer__logo:hover,.footer__link:hover{
+.footer__logo:hover,.footer__link:hover, .footer__address:hover{
   color: #FFB4A2;
 }
 .footer__block {

@@ -1,5 +1,5 @@
 header{
-    background-color: #b5838d;
+    background-color: var(--color-B5838D);
     width: 100%;
     position: fixed;
     top: 0;
@@ -25,7 +25,9 @@ header{
 .header__list {
     display: flex;
     list-style: none;
-    transform: translateX(20%);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .header__list li:not(:last-child){
     margin: 0px 20px 0 0;
@@ -37,10 +39,33 @@ header{
     letter-spacing: 0.1em;
     font-size: 14px;
     font-weight: 600;
+    -webkit-transition: color .3s ease;
+    -moz--transition: color .3s ease;
     transition: color .3s ease;
 }
-.header__logo:hover, .header__link:hover{
-    color: #FFB4A2;
+.header__link:after {
+    display: block;
+    content: "";
+    background-color: #fff;
+    height: 1px;
+    width: 0%;
+    margin-top: 5px;
+    border-radius: 100px;
+    left: 50%;
+    position: absolute;
+    -webkit-transition: width .3s ease;
+    -moz--transition: width .3s ease;
+    transition: width .3s ease;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.header__link:hover:after,
+.header__link:focus:after {
+    width: 100%;
+}
+.header__logo:hover{
+    color: var(--color-FFB4A2);
 }
 .header__buttons {
     display: flex;
@@ -53,14 +78,16 @@ header{
 .header__button {
     display: flex;
     align-items: center;
-    font-size: 14px;
-    font-weight: 600;
     padding: 9px 13px;
     border-radius: 100px;
-    background: #FFB4A2;
-    color: #4b4949;
-    letter-spacing: 0.045em;
+    background: var(--color-FFB4A2);
+    color: var(--color-3C4043);
     transition: box-shadow .3s ease;
+}
+.header__button p{
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.045em;
 }
 .header__button img{
     margin-right: 10px;
@@ -77,6 +104,9 @@ header{
     width: 40px;
     height: 40px;
     display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .header__burger_close{
     -webkit-mask: url(../images/icons/close.svg) center / 100% no-repeat;
@@ -92,6 +122,7 @@ header{
 @media (max-width:926px) {
     .header__list{
         transform: none;
+        position: unset;
     }
     .header__button p{
         display: none;
@@ -101,9 +132,6 @@ header{
     }
 }
 @media (max-width:767px) {
-    body.lock{
-        overflow: hidden;
-    }
     .header__logo{
         font-size: 30px;
     }

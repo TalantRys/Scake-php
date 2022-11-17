@@ -6,6 +6,7 @@ main {
 main>*{
     margin: 0 0 120px 0;
 }
+
 .icon{
     -webkit-mask: url(../images/icons/long-arrow-right.svg) center / 100% no-repeat;
     mask: url(../images/icons/long-arrow-right.svg) center / 100% no-repeat;
@@ -17,7 +18,7 @@ main>*{
     text-align: center;
     font-weight: 600;
     font-size: 36px;
-    line-height: calc(44/26*100%);
+    line-height: calc(44/36*100%);
     margin: 0 0 50px 0;
 }
 .subtitle {
@@ -37,7 +38,7 @@ main>*{
     font-size: 18px;
     gap: 12px;
     background-color: #6D6875;
-    transition: box-shadow .3s ease;
+    transition: all .3s ease;
 }
 .button__link:hover{
     box-shadow: 0px 7px 20px 0px rgba(181, 131, 141, 0.5);
@@ -199,8 +200,6 @@ main>*{
 }
 .delivery__container {
 }
-.container {
-}
 .delivery__title {
     margin: 0 0 10px 0;
 }
@@ -209,6 +208,8 @@ main>*{
 .delivery__logos {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 53px;
 }
 .delivery__logo {
@@ -228,23 +229,51 @@ main>*{
 .delivery__logo:hover{
     box-shadow: 0px 8px 15px 0px rgba(181, 131, 141, 1);
 }
-.logo-delivery-1 {
 
-}
-.logo-delivery-2 {
 
+/* -----------------------------------------МЕДИА-ЗАПРОСЫ */
+@media (max-width:1200px) {
+    .about__container{
+        gap: 50px;
+    }
+    .about__image{
+        flex: 0 0;
+        height: 350px;
+    }
+    .about__block{
+        padding: 0 50px 0 0;
+    }
 }
-.logo-delivery-3 {
-
+@media (max-width:992px) {
+    .about__image{
+        height: 300px;
+    }
 }
-.logo-delivery-4 {
+@media (max-width:926px) {
+    main>*{
+        margin: 0 0 80px 0;
+    }
+    main.about-page, 
+    main.cakes, 
+    .contact-us__questions, 
+    main.delivery{
+        padding-top: 150px !important;
+    }
+    .about__image{
+        flex: 1 1 auto;
+    }
+    .about__container{
+        flex-direction: column;
+    }
+    .about__block{
+        padding: 0 10%;
+    }
 }
-
 @media (max-width:767px) {
     .title{
         font-size: 28px;
     }
-    .card__title {
+    .products__card .card__title {
         font-size: 22px;
     }
     .products__cards{
@@ -253,26 +282,87 @@ main>*{
     .products__card{
         flex: 0 1 270px;
     }
+    .delivery__logos{
+        gap: 30px;
+    }
 }
 @media (max-width:575px) {
+    main>*{
+        margin: 0 0 50px 0;
+    }
+    main.about-page, 
+    main.cakes, 
+    .contact-us__questions, 
+    main.delivery{
+        padding-top: 100px !important;
+    }
     .products__card{
         flex: 0 1 230px;
         padding: 15px 20px;
     }
-    .card__title {
-        font-size: 24px;
-    }
-    
     .card__desc {
         font-size: 14px;
     }
     .card__price{
         font-size: 20px;
     }
+    .about__block>*:not(:last-child){
+        margin: 0 0 20px 0;
+    }
+    .delivery__logos{
+        gap: 20px;
+    }
+}
+@media (max-width:486px) {
+    .about__image{
+        width: 100%;
+        height: unset;
+    }
+    .about__block{
+        padding: 0;
+    }
 }
 @media (max-width:424px) {
+    main>*{
+        margin: 0 0 40px 0;
+    }
+    main.about-page, 
+    main.cakes, 
+    .contact-us__questions, 
+    main.delivery{
+        padding-top: 70px !important;
+    }
+    .button{
+        font-size: 14px;
+        gap: 6px;
+    }
     .title{
-        font-size: 20px;
+        font-size: 23px;
         margin: 0 0 20px 0;
+    }
+    .subtitle{
+        font-size: 14px;
+        margin: -10px 0 20px 0;
+    }
+    .products__card .card__title {
+        font-size: 20px;
+    }
+    .card__buy{
+        width: 30px;
+        height: 30px;
+    }
+    .card__buy img{
+        width: 18px;
+        height: 18px;
+    }
+    .about__container{
+        gap: 20px;
+    }
+    
+    .about__block>*:not(:last-child){
+        margin: 0 0 15px 0;
+    }
+    .about__text{
+        font-size: 14px;
     }
 }

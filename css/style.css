@@ -1,21 +1,44 @@
 @import url(font.css);
 @import url(slider.css);
+@import url(popup.css);
 @import url(header.css);
-@import url(main.css);
 @import url(footer.css);
-@import url(tabs.css);
+@import url(main.css);
 @import url(about-main.css);
 @import url(cakes-main.css);
+@import url(contact_us-main.css);
+@import url(delivery-main.css);
 
 :root {
-  --color-FFCDB2: var(#FFCDB2);
-  --color-FFB4A2: var(#FFB4A2);
-  --color-E5989B: var(#E5989B);
-  --color-B5838D: var(#B5838D);
-  --color-6D6875: var(#6D6875);
-  --color-3C4043: var(#3C4043);
+  --color-FFCDB2: #FFCDB2;
+  --color-FFB4A2: #FFB4A2;
+  --color-E5989B: #E5989B;
+  --color-B5838D: #B5838D;
+  --color-6D6875: #6D6875;
+  --color-3C4043: #3C4043;
+}
+body::-webkit-scrollbar {
+  width: 5px;
 }
 
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #3C4043;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+body.lock{
+  overflow: hidden;
+}
+.scrollbar::-webkit-scrollbar{
+  width: 3px;
+}
+.scrollbar::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #3C4043;
+}
 *,
 ::before,
 ::after {
@@ -33,6 +56,7 @@ span {
   display: block;
   text-decoration: none;
   color: inherit;
+  background-color: inherit;
   border: none;
   letter-spacing: inherit;
 }
@@ -40,13 +64,14 @@ span {
 html,
 body {
   height: 100%;
-  background-color: #FFCDB2;
+  background-color: var(--color-FFCDB2);
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .container {
@@ -56,11 +81,11 @@ body {
   padding: 0 10px;
 }
 
-.header__container {
+.header__nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 70px;
   margin: 0 auto;
 }
 
@@ -77,14 +102,8 @@ body {
   padding: 0 20px;
 }
 
-@media (max-width:926px) {
-  .header__container {
-    height: 70px;
-  }
-}
-
 @media (max-width:767px) {
-  .header__container {
+  .header__nav {
     height: 50px;
   }
 }

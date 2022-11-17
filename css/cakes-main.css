@@ -1,8 +1,143 @@
 main.cakes {
-    flex: 1 1 auto;
-    color: #3C4043;
     padding: 220px 0 0 0;
 }
-main.cakes>*{
+
+main.cakes>* {
     margin: 0 0 120px 0;
+}
+
+.cakes__nav {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.cakes__nav ul::-webkit-scrollbar {
+    display: none;
+}
+
+.cakes__nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.cakes__nav::before {
+    content: "";
+    height: 5px;
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    width: 807px;
+    bottom: 0;
+}
+
+.cakes__nav li {
+    padding: 0 13px;
+}
+
+.cakes-nav__button {
+    font-size: 24px;
+}
+
+.cakes__nav li:first-child {
+    padding-left: 0;
+}
+
+.cakes__nav li:last-child {
+    padding-right: 0;
+}
+
+.cakes-nav__button_selected {
+    font-weight: 600;
+    transition: font-weight .1s ease;
+}
+
+.cakes-nav__line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 100px;
+    height: 5px;
+    background-color: #3c4043;
+    width: 5px;
+    transition: all .3s ease;
+}
+
+@media (max-width:1200px) {}
+
+@media (max-width:992px) {}
+
+@media (max-width:926px) {}
+
+@media (max-width:824px) {
+    .cakes__nav {
+        margin: 0 auto 30px;
+        padding: 0 10px;
+    }
+
+    .cakes__nav ul {
+        overflow-x: scroll;
+        justify-content: flex-start;
+    }
+
+    .cakes__nav::before {
+        width: 648px;
+    }
+
+    .cakes__nav li {
+        padding: 0 7px;
+    }
+
+    .cakes-nav__button {
+        font-size: 20px;
+        position: relative;
+    }
+    .cakes-nav__button::after {
+        display: block;
+        content: "";
+        background-color: #3c4043;
+        height: 5px;
+        width: 0%;
+        margin-top: 5px;
+        border-radius: 100px;
+        left: 50%;
+        position: absolute;
+        -webkit-transition: all .3s ease;
+        -moz--transition: all .3s ease;
+        transition: all .3s ease;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+    
+    .cakes-nav__button_selected.cakes-nav__button::after {
+        width: 100%;
+    }
+    .cakes-nav__line{
+        display: none;
+    }
+}
+
+@media (max-width:767px) {}
+@media (max-width:660px) {
+    .cakes__nav::before {
+        width: unset;
+        left: 10px;
+        right: 10px;
+    }
+}
+@media (max-width:575px) {}
+
+@media (max-width:486px) {}
+
+@media (max-width:424px) {
+    .cakes__nav li{
+        padding: 0 5px;
+    }
+    .cakes-nav__button {
+        font-size: 16px;
+    }
 }
