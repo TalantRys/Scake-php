@@ -9,10 +9,10 @@
     $mail->Charset = 'UTF-8';
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $phone = $_POST['phone'];
+    $number = $_POST['number'];
     $message = $_POST['message'];
 
-    $body = $name.' '.$email.' '.$phone.' '.$message;
+    $body = $name.' '.$email.' '.$number.' '.$message;
     $theme = "[Заявка с формы]";
 
     $mail->addAddress('rtalant02@mail.ru');
