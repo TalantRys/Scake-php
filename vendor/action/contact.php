@@ -1,22 +1,47 @@
-<?
+<?php
+
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require '../../libs/PHPMailer/src/PHPMailer.php';
-    require '../../libs/PHPMailer/src/Exception.php';
+    require "../../libs/PHPMailer/src/PHPMailer.php";
+    require "../../libs/PHPMailer/src/Exception.php";
 
     $mail = new PHPMailer(true);
-    $mail->Charset = 'UTF-8';
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $number = $_POST['number'];
-    $message = $_POST['message'];
+	
+    $mail->CharSet = "UTF-8";
+    $mail->IsHTML(true);
 
-    $body = $name.' '.$email.' '.$number.' '.$message;
-    $theme = "[Заявка с формы]";
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+	$number = $_POST["number"];
+    $textarea = $_POST["message"];
+	$email_template = "template_mail.html";
 
-    $mail->addAddress('rtalant02@mail.ru');
-    $mail->Subject = $theme;
-    $mail->Body = $body;
+    if ($textarea == ''){
+        $textarea = 'Нет сообщения!';
+    }
 
-    $mail->send();
+    $body = file_get_contents($email_template);
+	$body = str_replace('%name%', $name, $body);
+	$body = str_replace('%email%', $email, $body);
+	$body = str_replace('%number%', $number, $body);
+	$body = str_replace('%message%', $textarea, $body);
+
+    $mail->addAddress("rtalant02@mail.ru");   // Здесь введите Email, куда отправлять
+    $mail->addAddress("rtalant02@gmail.com");   // Здесь введите Email, куда отправлять
+	$mail->setFrom($email);
+    $mail->Subject = "Письмо от ".$email;
+    $mail->MsgHTML($body);
+
+    if (!$mail->send()) {
+        $message = "Ошибка отправки";
+    } else {
+        $message = "Данные отправлены!";
+    }
+	
+	$response = ["message" => $message];
+
+    header('Content-type: application/json');
+    echo json_encode($response);
+
+?>

@@ -8,6 +8,7 @@
 @import url(cakes-main.css);
 @import url(contact_us-main.css);
 @import url(delivery-main.css);
+@import url(reg-auth.css);
 
 :root {
   --color-FFCDB2: #FFCDB2;

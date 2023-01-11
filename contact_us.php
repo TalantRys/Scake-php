@@ -1,3 +1,6 @@
+<?php
+session_start();
+require 'vendor/components/connect.php' ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -22,16 +25,26 @@
                         вам
                         как можно быстрее.</h3>
                         <div class="contact-us__fields">
-                            <form class="contact-us__form" action="" method="post">
+                            <form id="form" class="contact-us__form" action="#" method="post">
                                 <div class="contact-us__inputs">
-                                    <input type="text" name="name" placeholder="Ваше имя" class="contact-us__input">
-                                    <input type="email" name="email" placeholder="Ваш email" class="contact-us__input">
-                                    <input type="tel" name="number" placeholder="Ваш номер телефона" class="contact-us__input">
+                                    <label for="input_text">
+                                        <input id="input_text" type="text" name="name" placeholder="Ваше имя" class="contact-us__input _required">
+                                        <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                                    </label>
+                                    <label for="input_email">
+                                        <input id="input_email" type="text" name="email" placeholder="Ваш email" class="contact-us__input _required">
+                                        <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                                    </label>
+                                    <label for="input_tel">
+                                        <input id="input_tel" type="tel" name="number" placeholder="Ваш номер телефона" class="contact-us__input _required" maxlength="18">
+                                        <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                                    </label>
                                 </div>
                                 <textarea name="message" placeholder="Ваше сообщение" class="contact-us__input contact-us__input_message"></textarea>
                                 <div class="contact-us__bottom">
                                     <input type="submit" name="submit" placeholder="Отправить" class="contact-us__input">
-                                    <div class="contact-us__note"></div>
+                                    <div class="contact-us__note">
+                                    </div>
                                 <p>Мы отвечаем через 1-2 дня. Спасибо за ожидание!</p>
                             </div>
                         </form>
@@ -57,6 +70,7 @@
         <? include "vendor/components/footer.php" ?>
     </div>
     <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="js/phone-mask.js"></script>
     <script src="js/contact-form.js"></script>
     <script src="js/script.js"></script>
 </body>

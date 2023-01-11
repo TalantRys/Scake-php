@@ -10,12 +10,22 @@
             </ul>
             <button class="header__burger"></button>
             <ul class="header__buttons">
-                <li><a href="#" class="header__button shop-panel"><img src="images/icons/shopping-cart.svg" alt="shopping cart">
+                <li>
+                    <a href="#" class="header__button shop-panel"><img src="images/icons/shopping-cart.svg" alt="shopping cart">
                         <p>Корзина</p>
-                    </a></li>
-                <li><a href="#" class="header__button"><img src="images/icons/user.svg" alt="user">
-                        <p>Войти</p>
-                    </a></li>
+                    </a>
+                </li>
+                <li>
+                    <? if (!$_SESSION['user']) { ?>
+                        <a href="authorize.php" class="header__button"><img src="images/icons/user.svg" alt="user">
+                            <p>Войти</p>
+                        </a>
+                    <? } elseif ($_SESSION['user']) { ?>
+                        <a href="vendor/action/logout.php" class="header__button"><img src="images/icons/user.svg" alt="user">
+                            <p>Выйти</p>
+                        </a>
+                    <? } ?>
+                </li>
             </ul>
         </nav>
     </div>

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<?php
+session_start();
+require 'vendor/components/connect.php' ?>
+>>>>>>> c56ec5f (форма обратной связи готова, реализована валидация и отправка на письма почту)
 <!DOCTYPE html>
 <html lang="ru">
 
