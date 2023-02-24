@@ -21,8 +21,9 @@
                             <p>Войти</p>
                         </a>
                     <? } elseif ($_SESSION['user']) { ?>
-                        <a href="vendor/action/logout.php" class="header__button"><img src="images/icons/user.svg" alt="user">
-                            <p>Выйти</p>
+                        <a href="vendor/action/logout.php" class="header__button">
+                            <img src="images/icons/user.svg" alt="user">
+                            <p></p>
                         </a>
                     <? } ?>
                 </li>
@@ -32,7 +33,7 @@
 </header>
 <div id="shop-popup" class="popup shop-panel-popup">
     <div class="popup__wrapper shop-panel-popup__wrapper">
-        <button class="shop-panel__button button"><span class="shop-panel__icon icon"></span></button>
+        <button class="shop-panel__button button icon"></button>
         <div class="shop-panel__body">
             <div class="shop-panel__orders scrollbar">
                 <div class="shop-panel__order">

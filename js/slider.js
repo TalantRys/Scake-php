@@ -84,3 +84,18 @@ sliderBody.addEventListener('mouseover', ()=>{
 sliderBody.addEventListener('mouseout',()=>{
   repeater();
 })
+
+
+// ---------------------ИЗМЕНЕНИЕ ШАПКИ
+const header = document.querySelector('header');
+const slider = document.querySelector('.main__slider');
+const sliderHeight = slider.offsetHeight;
+header.classList.add('header_opacity');
+window.addEventListener('scroll', function () {
+  let scrollDistance = window.pageYOffset;
+  if (scrollDistance >= sliderHeight) {
+    header.classList.remove('header_opacity');
+  } else {
+    header.classList.add('header_opacity');
+  }
+});

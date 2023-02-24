@@ -23,7 +23,8 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
   background-color: #3C4043;
 }
 
@@ -37,7 +38,8 @@ body.lock{
   width: 3px;
 }
 .scrollbar::-webkit-scrollbar-thumb{
-  border-radius: 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
   background-color: #3C4043;
 }
 *,
@@ -45,7 +47,9 @@ body.lock{
 ::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   font-family: Montserrat, serif;
   font-size: 18px;
   letter-spacing: 0.045em;
@@ -69,8 +73,16 @@ body {
 }
 
 .wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -78,14 +90,25 @@ body {
 .container {
   max-width: 1240px;
   margin: 0 auto;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
   padding: 0 10px;
 }
 
 .header__nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
   height: 70px;
   margin: 0 auto;
 }
@@ -93,13 +116,21 @@ body {
 .main__container {}
 
 .footer__container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+          justify-content: space-between;
   padding: 30px 10px;
 }
 
-.footer__down_container {
-  box-sizing: border-box;
+.footer__bottom_container {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0 20px;
 }
 

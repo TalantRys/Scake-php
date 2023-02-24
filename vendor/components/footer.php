@@ -76,8 +76,8 @@
             </a>
         </div>
     </div>
-    <div class="footer__down">
-        <div class="footer__down_container container">
+    <div class="footer__bottom">
+        <div class="footer__bottom_container container">
             <hr />
             <p class="footer__copyright">&copy; 2022 ИСП306 Рыскулов Талант</p>
         </div>

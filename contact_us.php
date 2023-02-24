@@ -21,30 +21,29 @@ require 'vendor/components/connect.php' ?>
                         <img src="images/contact-form.jpg" alt="contact-form.jpg">
                     </div>
                     <h2 class="contact-us__title title">У вас возникли вопросы?</h2>
-                    <h3 class="contact-us__subtitle subtitle">Вы можете заполнить форму обратной связи <br> и мы ответим
-                        вам
-                        как можно быстрее.</h3>
-                        <div class="contact-us__fields">
-                            <form id="form" class="contact-us__form" action="#" method="post">
-                                <div class="contact-us__inputs">
-                                    <label for="input_text">
-                                        <input id="input_text" type="text" name="name" placeholder="Ваше имя" class="contact-us__input _required">
-                                        <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
-                                    </label>
-                                    <label for="input_email">
-                                        <input id="input_email" type="text" name="email" placeholder="Ваш email" class="contact-us__input _required">
-                                        <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
-                                    </label>
-                                    <label for="input_tel">
-                                        <input id="input_tel" type="tel" name="number" placeholder="Ваш номер телефона" class="contact-us__input _required" maxlength="18">
-                                        <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
-                                    </label>
-                                </div>
-                                <textarea name="message" placeholder="Ваше сообщение" class="contact-us__input contact-us__input_message"></textarea>
-                                <div class="contact-us__bottom">
-                                    <input type="submit" name="submit" placeholder="Отправить" class="contact-us__input">
-                                    <div class="contact-us__note">
-                                    </div>
+                    <h3 class="contact-us__subtitle subtitle">
+                        Вы можете заполнить форму обратной связи <br>
+                        и мы ответим вам как можно быстрее.
+                    </h3>
+                    <div class="contact-us__fields">
+                        <form id="form" class="contact-us__form" action="#" method="post">
+                            <div class="contact-us__inputs">
+                                <label for="input_text">
+                                    <input id="input_text" type="text" name="name" placeholder="Ваше имя" class="contact-us__input _required">
+                                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                                </label>
+                                <label for="input_email">
+                                    <input id="input_email" type="text" name="email" placeholder="Ваш email" class="contact-us__input _required">
+                                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                                </label>
+                                <label for="input_tel">
+                                    <input id="input_tel" type="tel" name="number" placeholder="Ваш номер телефона" class="contact-us__input _required" maxlength="18">
+                                    <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
+                                </label>
+                            </div>
+                            <textarea name="message" placeholder="Ваше сообщение" class="contact-us__input contact-us__input_message"></textarea>
+                            <div class="contact-us__bottom">
+                                <input type="submit" name="submit" placeholder="Отправить" value="Отправить" class="contact-us__input">
                                 <p>Мы отвечаем через 1-2 дня. Спасибо за ожидание!</p>
                             </div>
                         </form>

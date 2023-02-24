@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('form');
   form.addEventListener('submit', formSend);
-  // let input = form.querySelector('.contact-us__input');
   let spanErrors = form.querySelectorAll('.input__error');
   async function formSend(e) {
     e.preventDefault();
@@ -9,15 +8,25 @@ document.addEventListener('DOMContentLoaded', function () {
     let formData = new FormData(form);
 
     if (error == 0) {
-      let response = await fetch('../vendor/action/contact.php', {
-        method: 'POST',
-        body: formData
-      });
-      if (response.ok) {
-        let result = await response.json();
-        alert(result.message);
-        form.reset();
-      } else { alert('Ошибка отправки письма!'); }
+      addLoad();
+      try {
+        let response = await fetch('../vendor/action/contact.php', {
+          method: 'POST',
+          body: formData
+        });
+        if (response.ok) {
+          let result = await response.json();
+          alert(result.message);
+          form.reset();
+          removeLoad();
+        } else {
+          alert('Ошибка отправки письма!');
+          removeLoad();
+        }
+      } catch (error) {
+        alert("Ошибка: " + error);
+        removeLoad();
+      }
     }
   }
 
@@ -60,10 +69,20 @@ document.addEventListener('DOMContentLoaded', function () {
   function emailTest(input) {
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
   }
+  // --------------РЕГУЛЯРКА ТЕЛЕФОНА
   function telTest(input) {
     return /(\+7|8)[\s(]*\d{3}[)\s]*\d{3}[\s-]?\d{2}[\s-]?\d{2}/.test(input.value);
   }
+  // --------------РЕГУЛЯРКА ИМЕНИ
   function nameTest(input) {
     return /^[А-Я][а-я]{1,19}/.test(input.value);
+  }
+
+// ----------------ЗАГРУЗКА ПРИ ОТПРАВКЕ ПИСЬМА
+  function addLoad() {
+    form.classList.add('_loading');
+  }
+  function removeLoad() {
+    form.classList.remove('_loading');
   }
 });
