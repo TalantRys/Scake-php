@@ -1,0 +1,481 @@
+main[class] {
+    padding: 70px 0 0 0;
+}
+main{
+    flex: 1 1 auto;
+    color: #3C4043;
+}
+section {
+    padding: 60px 0;
+}
+
+section:first-of-type:not(.contact-us__questions) {
+    padding-top: 120px;
+}
+
+section:last-child {
+    padding-bottom: 120px;
+}
+
+.icon::before {
+    -webkit-mask: url(../images/icons/long-arrow-right.svg) center / 100% no-repeat;
+    mask: url(../images/icons/long-arrow-right.svg) center / 100% no-repeat;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    content: '';
+}
+
+.title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: calc(44/36*100%);
+    margin: 0 0 50px 0;
+}
+
+.subtitle {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: calc(22/18*100%);
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.button {
+    display: inline-flex;
+    padding: 0 10px;
+    height: 40px;
+    border-radius: 100px;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    gap: 12px;
+    background-color: #6D6875;
+    transition: all .3s ease;
+}
+
+.button__link:hover {
+    box-shadow: 0px 7px 20px 0px rgba(181, 131, 141, 0.5);
+}
+
+.image {}
+
+.image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+/*---------------------------------------- ПОПУЛЯРНОЕ */
+
+.main__products {}
+
+.products {}
+
+.products__title {}
+
+
+.products__cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 317px));
+    gap: 50px;
+    justify-content: center;
+}
+
+.products__card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 18px;
+    padding: 15px 43px;
+    background-color: #FFB4A2;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    transition: box-shadow .3s ease;
+}
+
+.products__card:hover {
+    box-shadow: 0px 8px 20px #B5838D;
+}
+
+.card {}
+
+.products__card>*:not(:last-child) {
+    margin: 0 0 10px 0;
+}
+
+.card__image {
+    width: 100%;
+    height: 200px;
+}
+
+.card__image img {
+    border-radius: 10px;
+}
+
+.card__title,
+.card__desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.card__title {
+    -webkit-line-clamp: 1;
+    font-size: 24px;
+    line-height: 29px;
+    width: 100%;
+}
+
+.card__desc {
+    margin: 0 0 15px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.card__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.card__buy {
+    background-color: #6D6875;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.card__buy:hover {
+    transform: scale(1.1);
+}
+
+.card__buy::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    -webkit-mask: url(../images/icons/shopping-cart-add.svg) center/ 100% no-repeat;
+    mask: url(../images/icons/shopping-cart-add.svg) center/ 100% no-repeat;
+    background-color: white;
+}
+
+.products__link {
+    margin: 30px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    transition: transform .3s ease;
+}
+
+.products__link:hover {
+    transform: scale(1.1);
+}
+
+/* ----------------------------------О НАС */
+.main__about {}
+
+.about {}
+
+.about__container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.about__image {
+    flex: 0 0 620px;
+    height: 414px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.45);
+    border-radius: 24px;
+}
+
+.image {}
+
+.about__block {
+    text-align: center;
+    padding: 0 100px 0 0;
+}
+
+.about__block>*:not(:last-child) {
+    margin: 0 0 29px 0;
+}
+
+.about__title {}
+
+.about__text {
+    flex: 1 1 auto;
+    text-align: justify;
+    line-height: calc(22/18*100%);
+}
+
+.button {}
+
+.about__link {
+    background-color: #FFB4A2;
+}
+
+/* -----------------------------------------ДОСТАВКА */
+
+.main__delivery {}
+
+.delivery {}
+
+.delivery__container {}
+
+.delivery__title {
+    margin: 0 0 10px 0;
+}
+
+.delivery__subtitle {}
+
+.delivery__logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 53px;
+}
+
+.delivery__logo {
+    width: 270px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: #FFB4A2;
+    transition: box-shadow .3s ease;
+}
+
+.delivery__logo img {
+    width: 230px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.delivery__logo:hover {
+    box-shadow: 0px 8px 15px 0px rgba(181, 131, 141, 1);
+}
+
+
+/* -----------------------------------------МЕДИА-ЗАПРОСЫ */
+@media (max-width:1200px) {
+    .about__container {
+        gap: 50px;
+    }
+
+    .about__image {
+        flex: 0 0;
+        height: 350px;
+    }
+
+    .about__block {
+        padding: 0 50px 0 0;
+    }
+}
+
+@media (max-width:992px) {
+    .about__image {
+        height: 300px;
+    }
+}
+
+@media (max-width:926px) {
+    section {
+        padding: 40px 0;
+    }
+
+    section:first-of-type:not(.contact-us__questions) {
+        padding-top: 80px;
+    }
+
+    section:last-child {
+        padding-bottom: 80px;
+    }
+
+    .products__cards {
+        gap: 30px;
+    }
+
+    .products__card {
+        padding: 15px;
+    }
+
+    .about__image {
+        flex: 1 1 auto;
+    }
+
+    .about__container {
+        flex-direction: column;
+    }
+
+    .about__block {
+        padding: 0 10%;
+    }
+}
+
+@media (max-width:767px) {
+    main[class] {
+        padding-top: 50px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .products__card .card__title {
+        font-size: 22px;
+    }
+
+    .products__cards {
+        grid-template-columns: repeat(2, minmax(100px, 317px));
+        gap: 30px;
+    }
+
+    .products__card {
+        flex: 0 1 270px;
+    }
+
+    .delivery__logos {
+        gap: 30px;
+    }
+}
+
+@media (max-width:575px) {
+    section {
+        padding: 25px 0;
+    }
+
+    section:first-of-type:not(.contact-us__questions) {
+        padding-top: 50px;
+    }
+
+    section:last-child {
+        padding-bottom: 50px;
+    }
+
+    .icon::before {
+        width: 20px;
+        height: 20px;
+    }
+
+    .products__card {
+        flex: 0 1 230px;
+        padding: 15px 20px;
+    }
+
+    .card__desc {
+        font-size: 14px;
+    }
+
+    .card__price {
+        font-size: 20px;
+    }
+
+    .about__block>*:not(:last-child) {
+        margin: 0 0 20px 0;
+    }
+
+    .delivery__logos {
+        gap: 20px;
+    }
+}
+
+@media (max-width:486px) {
+    .about__image {
+        width: 100%;
+        height: unset;
+    }
+
+    .about__block {
+        padding: 0;
+    }
+
+    .products__cards {
+        gap: 8px;
+    }
+
+    .products__card {
+        padding: 8px;
+    }
+}
+
+@media (max-width:424px) {
+    section {
+        padding: 20px 0;
+    }
+
+    section:first-of-type:not(.contact-us__questions) {
+        padding-top: 40px;
+    }
+
+    section:last-child {
+        padding-bottom: 40px;
+    }
+
+    .button {
+        font-size: 14px;
+        gap: 6px;
+    }
+
+    .title {
+        font-size: 23px;
+        margin: 0 0 20px 0;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        margin: -10px 0 20px 0;
+    }
+
+    .products__card .card__title {
+        font-size: 20px;
+    }
+
+    .card__image {
+        height: 150px;
+    }
+
+    .card__buy {
+        width: 35px;
+        height: 35px;
+    }
+
+    .card__buy::before {
+        width: 19px;
+        height: 19px;
+    }
+
+    .about__container {
+        gap: 20px;
+    }
+
+    .about__block>*:not(:last-child) {
+        margin: 0 0 15px 0;
+    }
+
+    .about__text {
+        font-size: 14px;
+    }
+}

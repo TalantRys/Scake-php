@@ -1,47 +1,54 @@
 <?php
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-    require "../../libs/PHPMailer/src/PHPMailer.php";
-    require "../../libs/PHPMailer/src/Exception.php";
+require "../../assets/libs/PHPMailer/src/PHPMailer.php";
+require "../../assets/libs/PHPMailer/src/Exception.php";
+require "../../assets/libs/PHPMailer/src/SMTP.php";
 
-    $mail = new PHPMailer(true);
-	
-    $mail->CharSet = "UTF-8";
-    $mail->IsHTML(true);
+$mail = new PHPMailer(true);
 
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-	$number = $_POST["number"];
-    $textarea = $_POST["message"];
-	$email_template = "template_mail.html";
+$mail->IsSMTP();
+$mail->CharSet = "UTF-8";
+$mail->IsHTML(true);
+// Настройки вашей почты
+$mail->Host       = 'smtp.mail.ru'; // SMTP сервера вашей почты
+$mail->Username   = 'rtalant02@mail.ru'; // Логин на почте
+$mail->Password   = 'y9GEhrewnJW2khTUd6ka'; // Пароль на почте
+$mail->SMTPSecure = 'tls';
+$mail->SMTPAuth = true;
+$mail->Port       = 587;
 
-    if ($textarea == ''){
-        $textarea = 'Нет сообщения!';
-    }
+$name = $_POST["name"];
+$email = $_POST["email"];
+$number = $_POST["number"];
+$textarea = $_POST["message"];
+$email_template = "template_mail.html";
 
-    $body = file_get_contents($email_template);
-	$body = str_replace('%name%', $name, $body);
-	$body = str_replace('%email%', $email, $body);
-	$body = str_replace('%number%', $number, $body);
-	$body = str_replace('%message%', $textarea, $body);
+if ($textarea == '') {
+    $textarea = 'Нет сообщения!';
+}
 
-    $mail->addAddress("rtalant02@mail.ru");   // Здесь введите Email, куда отправлять
-    $mail->addAddress("rtalant02@gmail.com");   // Здесь введите Email, куда отправлять
-	$mail->setFrom($email);
-    $mail->Subject = "Письмо от ".$email;
-    $mail->MsgHTML($body);
+$body = file_get_contents($email_template);
+$body = str_replace('%name%', $name, $body);
+$body = str_replace('%email%', $email, $body);
+$body = str_replace('%number%', $number, $body);
+$body = str_replace('%message%', $textarea, $body);
 
-    if (!$mail->send()) {
-        $message = "Ошибка отправки";
-    } else {
-        $message = "Данные отправлены!";
-    }
-	
-	$response = ["message" => $message];
+$mail->setFrom($email);
+$mail->addAddress("rtalant02@mail.ru"); // Здесь введите Email, куда отправлять
+$mail->Subject = "Письмо от " . $email;
+$mail->MsgHTML($body);
 
-    header('Content-type: application/json');
-    echo json_encode($response);
+if (!$mail->send()) {
+    $message = "Ошибка отправки";
+} else {
+    $message = "Данные отправлены!";
+}
 
-?>
+$response = ["message" => $message];
+
+header('Content-type: application/json');
+echo json_encode($response);

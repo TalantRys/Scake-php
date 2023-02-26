@@ -1,11 +1,3 @@
-main.cakes {
-    padding: 220px 0 0 0;
-}
-
-main.cakes>* {
-    margin: 0 0 120px 0;
-}
-
 .cakes__nav {
     display: -webkit-box;
     display: -webkit-flex;

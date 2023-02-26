@@ -1,9 +1,4 @@
-main.about-page {
-    padding: 220px 0 0 0;
-}
-main.about-page>*:last-child {
-    margin: 0 0 0 0;
-}
+
 
 .about-page .main__about {}
 
@@ -184,8 +179,10 @@ main.about-page>*:last-child {
     }
 }
 @media (max-width:767px) {
-    .about-contacts__block{
-        color: var(--color-FFCDB2);
+    .about-contacts__block,
+    .sign-up .about-contacts__block,
+    .sign-in .about-contacts__block{
+        color: var(--color-orange-1);
         margin: 0;
     }
     .about-contacts__image::before{

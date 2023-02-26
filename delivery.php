@@ -8,12 +8,12 @@ require 'vendor/components/connect.php' ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <? include 'vendor/components/head-link.php'?>
+    <?php include 'vendor/components/head-link.php' ?>
 </head>
 
 <body>
     <div class="wrapper">
-        <? include "vendor/components/header.php" ?>
+        <?php include "vendor/components/header.php" ?>
         <main class="delivery">
             <section class="delivery__delivery">
                 <div class="delivery__container container">
@@ -22,7 +22,7 @@ require 'vendor/components/connect.php' ?>
                     <div class="delivery__block">
                         <div class="delivery__item">
                             <div class="delivery__icons">
-                                <img src="images/icons/delivery/delivery-1.svg" alt="delivery-1.svg">
+                                <img src="assets/images/icons/delivery/delivery-1.svg" alt="delivery-1.svg">
                             </div>
                             <div class="delivery__info">
                                 <h3 class="delivery-info__title title">Безопасный грузовик</h3>
@@ -32,7 +32,7 @@ require 'vendor/components/connect.php' ?>
                         </div>
                         <div class="delivery__item">
                             <div class="delivery__icons">
-                                <img src="images/icons/delivery/delivery-2.svg" alt="delivery-2.svg">
+                                <img src="assets/images/icons/delivery/delivery-2.svg" alt="delivery-2.svg">
                             </div>
                             <div class="delivery__info">
                                 <h3 class="delivery-info__title title">Доставляем по всему городу</h3>
@@ -42,7 +42,7 @@ require 'vendor/components/connect.php' ?>
                         </div>
                         <div class="delivery__item">
                             <div class="delivery__icons">
-                                <img src="images/icons/delivery/delivery-3.svg" alt="delivery-3.svg">
+                                <img src="assets/images/icons/delivery/delivery-3.svg" alt="delivery-3.svg">
                             </div>
                             <div class="delivery__info">
                                 <h3 class="delivery-info__title title">Ваш торт прямо у дома</h3>
@@ -116,10 +116,11 @@ require 'vendor/components/connect.php' ?>
 
             </section>
         </main>
-        <? include "vendor/components/footer.php" ?>
+        <?php include "vendor/components/footer.php" ?>
     </div>
-    <script src="libs/jquery/dist/jquery.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/shop.js"></script>
 </body>
 
 </html>

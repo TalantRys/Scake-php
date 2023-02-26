@@ -4,19 +4,19 @@
 @import url(header.css);
 @import url(footer.css);
 @import url(main.css);
+@import url(contact_us-main.css);
+@import url(form.css);
 @import url(about-main.css);
 @import url(cakes-main.css);
-@import url(contact_us-main.css);
 @import url(delivery-main.css);
-@import url(reg-auth.css);
 
 :root {
-  --color-FFCDB2: #FFCDB2;
-  --color-FFB4A2: #FFB4A2;
-  --color-E5989B: #E5989B;
-  --color-B5838D: #B5838D;
-  --color-6D6875: #6D6875;
-  --color-3C4043: #3C4043;
+  --color-orange-1: #FFCDB2;
+  --color-orange-2: #FFB4A2;
+  --color-orange-3: #E5989B;
+  --color-red: #B5838D;
+  --color-gray: #6D6875;
+  --color-black: #3C4043;
 }
 body::-webkit-scrollbar {
   width: 5px;
@@ -69,7 +69,7 @@ span {
 html,
 body {
   height: 100%;
-  background-color: var(--color-FFCDB2);
+  background-color: var(--color-orange-1);
 }
 
 .wrapper {

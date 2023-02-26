@@ -11,21 +11,21 @@
             <button class="header__burger"></button>
             <ul class="header__buttons">
                 <li>
-                    <a href="#" class="header__button shop-panel"><img src="images/icons/shopping-cart.svg" alt="shopping cart">
+                    <a href="#" class="header__button shop-panel"><img src="assets/images/icons/shopping-cart.svg" alt="shopping cart">
                         <p>Корзина</p>
                     </a>
                 </li>
                 <li>
-                    <? if (!$_SESSION['user']) { ?>
-                        <a href="authorize.php" class="header__button"><img src="images/icons/user.svg" alt="user">
+                    <?php if (!isset($_SESSION['user'])) { ?>
+                        <a href="sign-in.php" class="header__button"><img src="assets/images/icons/user.svg" alt="user">
                             <p>Войти</p>
                         </a>
-                    <? } elseif ($_SESSION['user']) { ?>
+                    <?php } elseif ($_SESSION['user']) { ?>
                         <a href="vendor/action/logout.php" class="header__button">
-                            <img src="images/icons/user.svg" alt="user">
-                            <p></p>
+                            <img src="assets/images/icons/user.svg" alt="user">
+                            <p>Выйти (<?= $_SESSION['user']['login']?>)</p>
                         </a>
-                    <? } ?>
+                    <?php } ?>
                 </li>
             </ul>
         </nav>
@@ -36,106 +36,49 @@
         <button class="shop-panel__button button icon"></button>
         <div class="shop-panel__body">
             <div class="shop-panel__orders scrollbar">
-                <div class="shop-panel__order">
+                <div data-num="1" class="shop-panel__order">
                     <div class="shop-panel__order-img image">
-                        <img src="images/cakes/cake-1.jpg" alt="cake">
+                        <img src="assets/images/cakes/cake-1.jpg" alt="cake">
                     </div>
                     <div class="shop-panel__order-form">
-                        <form action="" method="post">
-                            <h6 class="shop-panel__order-title title">Торт</h6>
-                            <p class="shop-panel__order-price">1000 p.</p>
-                            <div class="shop-panel__order-count">
-                                <input type="button" value="-">
-                                <span>1</span>
-                                <input type="button" value="+">
-                            </div>
-                            <input class="shop-panel__button-remove" type="button" value="Убрать">
-                        </form>
+                        <h6 class="shop-panel__order-title title">Торт</h6>
+                        <p class="shop-panel__order-price">1000 p.</p>
+                        <div class="shop-panel__order-count">
+                            <input id="minus" type="button" value="-">
+                            <span id="count">1</span>
+                            <input id="plus" type="button" value="+">
+                        </div>
+                        <input class="shop-panel__button-remove" type="button" value="Убрать">
                     </div>
                 </div>
                 <div class="shop-panel__order">
                     <div class="shop-panel__order-img image">
-                        <img src="images/cakes/cake-3.jpg" alt="cake">
+                        <img src="assets/images/cakes/cake-3.jpg" alt="cake">
                     </div>
                     <div class="shop-panel__order-form">
-                        <form action="" method="post">
-                            <h6 class="shop-panel__order-title title">Торт</h6>
-                            <p class="shop-panel__order-price">1000 p.</p>
-                            <div class="shop-panel__order-count">
-                                <input type="button" value="-">
-                                <span>1</span>
-                                <input type="button" value="+">
-                            </div>
-                            <input class="shop-panel__button-remove" type="button" value="Убрать">
-                        </form>
+                        <h6 class="shop-panel__order-title title">Торт</h6>
+                        <p class="shop-panel__order-price">1000 p.</p>
+                        <div class="shop-panel__order-count">
+                            <input id="minus" type="button" value="-">
+                            <span id="count">1</span>
+                            <input id="plus" type="button" value="+">
+                        </div>
+                        <input class="shop-panel__button-remove" type="button" value="Убрать">
                     </div>
                 </div>
                 <div class="shop-panel__order">
                     <div class="shop-panel__order-img image">
-                        <img src="images/cakes/cake-2.jpg" alt="cake">
+                        <img src="assets/images/cakes/cake-2.jpg" alt="cake">
                     </div>
                     <div class="shop-panel__order-form">
-                        <form action="" method="post">
-                            <h6 class="shop-panel__order-title title">Торт</h6>
-                            <p class="shop-panel__order-price">1000 p.</p>
-                            <div class="shop-panel__order-count">
-                                <input type="button" value="-">
-                                <span>1</span>
-                                <input type="button" value="+">
-                            </div>
-                            <input class="shop-panel__button-remove" type="button" value="Убрать">
-                        </form>
-                    </div>
-                </div>
-                <div class="shop-panel__order">
-                    <div class="shop-panel__order-img image">
-                        <img src="images/cakes/cake-1.jpg" alt="cake">
-                    </div>
-                    <div class="shop-panel__order-form">
-                        <form action="" method="post">
-                            <h6 class="shop-panel__order-title title">Торт</h6>
-                            <p class="shop-panel__order-price">1000 p.</p>
-                            <div class="shop-panel__order-count">
-                                <input type="button" value="-">
-                                <span>1</span>
-                                <input type="button" value="+">
-                            </div>
-                            <input class="shop-panel__button-remove" type="button" value="Убрать">
-                        </form>
-                    </div>
-                </div>
-                <div class="shop-panel__order">
-                    <div class="shop-panel__order-img image">
-                        <img src="images/cakes/cake-3.jpg" alt="cake">
-                    </div>
-                    <div class="shop-panel__order-form">
-                        <form action="" method="post">
-                            <h6 class="shop-panel__order-title title">Торт</h6>
-                            <p class="shop-panel__order-price">1000 p.</p>
-                            <div class="shop-panel__order-count">
-                                <input type="button" value="-">
-                                <span>1</span>
-                                <input type="button" value="+">
-                            </div>
-                            <input class="shop-panel__button-remove" type="button" value="Убрать">
-                        </form>
-                    </div>
-                </div>
-                <div class="shop-panel__order">
-                    <div class="shop-panel__order-img image">
-                        <img src="images/cakes/cake-2.jpg" alt="cake">
-                    </div>
-                    <div class="shop-panel__order-form">
-                        <form action="" method="post">
-                            <h6 class="shop-panel__order-title title">Торт</h6>
-                            <p class="shop-panel__order-price">1000 p.</p>
-                            <div class="shop-panel__order-count">
-                                <input type="button" value="-">
-                                <span>1</span>
-                                <input type="button" value="+">
-                            </div>
-                            <input class="shop-panel__button-remove" type="button" value="Убрать">
-                        </form>
+                        <h6 class="shop-panel__order-title title">Торт</h6>
+                        <p class="shop-panel__order-price">1000 p.</p>
+                        <div class="shop-panel__order-count">
+                            <input id="minus" type="button" value="-">
+                            <span id="count">1</span>
+                            <input id="plus" type="button" value="+">
+                        </div>
+                        <input class="shop-panel__button-remove" type="button" value="Убрать">
                     </div>
                 </div>
             </div>

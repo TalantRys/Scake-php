@@ -56,18 +56,18 @@
                 <div class="footer__social">
                     <p class="social__title">Мы в соц. сетях:</p>
                     <div class="social__block">
-                        <a target="_blank" href="http://vk.com"><img src="images/icons/Social/vk.svg" alt="vk" /></a>
-                        <a target="_blank" href="http://telegram.com"><img src="images/icons/Social/telegram.svg" alt="telegram" /></a>
+                        <a target="_blank" href="http://vk.com"><img src="assets/images/icons/Social/vk.svg" alt="vk" /></a>
+                        <a target="_blank" href="http://telegram.com"><img src="assets/images/icons/Social/telegram.svg" alt="telegram" /></a>
                     </div>
                 </div>
                 <div class="footer__pay">
                     <p class="pay__title">Платёжные системы:</p>
                     <div class="pay__block">
-                        <img src="images/icons/pay/visa.svg" alt="visa" />
-                        <img src="images/icons/pay/mastercard.svg" alt="mastercard" />
-                        <img src="images/icons/pay/maestro.svg" alt="maestro" />
-                        <img src="images/icons/pay/apple-pay.svg" alt="apple-pay" />
-                        <img src="images/icons/pay/google-pay.svg" alt="google-pay" />
+                        <img src="assets/images/icons/pay/visa.svg" alt="visa" />
+                        <img src="assets/images/icons/pay/mastercard.svg" alt="mastercard" />
+                        <img src="assets/images/icons/pay/maestro.svg" alt="maestro" />
+                        <img src="assets/images/icons/pay/apple-pay.svg" alt="apple-pay" />
+                        <img src="assets/images/icons/pay/google-pay.svg" alt="google-pay" />
                     </div>
                 </div>
             </div>

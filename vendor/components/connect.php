@@ -1,13 +1,15 @@
 <?php 
 $db = 'railway';
-$host = 'containers-us-west-106.railway.app';
-$password = 'al1Fjhxj6emvz0jTIrLk';
-$port = '6126';
+$host = 'containers-us-west-202.railway.app';
+$password = 'ta6s0uLKresrqufBI5XV';
+$port = '7347';
 $user = 'root';
 
-if($_SERVER['HTTP_HOST'] == $host){
-    $link = mysqli_connect($host, $user, $password, $db, $port);
+if($_SERVER['HTTP_HOST'] == 'scake' || $_SERVER['HTTP_HOST'] == 'localhost'){
+    // MY LOCAL BASE
+    $link = mysqli_connect('localhost', 'root', 'root', 'scake');
 } else {
-    $link = mysqli_connect('localhost', 'root', '', 'scake');
+    // RAILWAY MYSQL BASE
+    $link = mysqli_connect($host, $user, $password, $db, $port);
 }
 ?>
