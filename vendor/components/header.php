@@ -10,20 +10,16 @@
             </ul>
             <button class="header__burger"></button>
             <ul class="header__buttons">
-                <li>
-                    <a href="#" class="header__button shop-panel"><img src="assets/images/icons/shopping-cart.svg" alt="shopping cart">
-                        <p>Корзина</p>
-                    </a>
-                </li>
+                <li><a href="#" class="header__button shop-panel icon">
+                <span class="shop-panel__length"></span>    
+                Корзина
+                </a></li>
                 <li>
                     <?php if (!isset($_SESSION['user'])) { ?>
-                        <a href="sign-in.php" class="header__button"><img src="assets/images/icons/user.svg" alt="user">
-                            <p>Войти</p>
-                        </a>
+                        <a href="sign-in.php" class="header__button header__button-sign icon">Войти</a>
                     <?php } elseif ($_SESSION['user']) { ?>
-                        <a href="vendor/action/logout.php" class="header__button">
-                            <img src="assets/images/icons/user.svg" alt="user">
-                            <p>Выйти (<?= $_SESSION['user']['login']?>)</p>
+                        <a href="vendor/action/logout.php" class="header__button header__button-sign icon">
+                            Выйти (<?= $_SESSION['user']['login']?>)
                         </a>
                     <?php } ?>
                 </li>
@@ -36,55 +32,12 @@
         <button class="shop-panel__button button icon"></button>
         <div class="shop-panel__body">
             <div class="shop-panel__orders scrollbar">
-                <div data-num="1" class="shop-panel__order">
-                    <div class="shop-panel__order-img image">
-                        <img src="assets/images/cakes/cake-1.jpg" alt="cake">
-                    </div>
-                    <div class="shop-panel__order-form">
-                        <h6 class="shop-panel__order-title title">Торт</h6>
-                        <p class="shop-panel__order-price">1000 p.</p>
-                        <div class="shop-panel__order-count">
-                            <input id="minus" type="button" value="-">
-                            <span id="count">1</span>
-                            <input id="plus" type="button" value="+">
-                        </div>
-                        <input class="shop-panel__button-remove" type="button" value="Убрать">
-                    </div>
-                </div>
-                <div class="shop-panel__order">
-                    <div class="shop-panel__order-img image">
-                        <img src="assets/images/cakes/cake-3.jpg" alt="cake">
-                    </div>
-                    <div class="shop-panel__order-form">
-                        <h6 class="shop-panel__order-title title">Торт</h6>
-                        <p class="shop-panel__order-price">1000 p.</p>
-                        <div class="shop-panel__order-count">
-                            <input id="minus" type="button" value="-">
-                            <span id="count">1</span>
-                            <input id="plus" type="button" value="+">
-                        </div>
-                        <input class="shop-panel__button-remove" type="button" value="Убрать">
-                    </div>
-                </div>
-                <div class="shop-panel__order">
-                    <div class="shop-panel__order-img image">
-                        <img src="assets/images/cakes/cake-2.jpg" alt="cake">
-                    </div>
-                    <div class="shop-panel__order-form">
-                        <h6 class="shop-panel__order-title title">Торт</h6>
-                        <p class="shop-panel__order-price">1000 p.</p>
-                        <div class="shop-panel__order-count">
-                            <input id="minus" type="button" value="-">
-                            <span id="count">1</span>
-                            <input id="plus" type="button" value="+">
-                        </div>
-                        <input class="shop-panel__button-remove" type="button" value="Убрать">
-                    </div>
-                </div>
+                <!-- ТОВАРЫ В КОРЗИНЕ -->
+                <h2 class="shop-panel__title title">Корзина пуста</h2>
             </div>
             <div class="shop-panel__bottom">
                 <form action="" method="post">
-                    <p>Всего: 6000 р.</p>
+                    <p>Всего: <span class="shop-panel__sum">0</span> р.</p>
                     <input class="shop-panel__bottom-button button" type="submit" value="Оформить заказ">
                 </form>
             </div>

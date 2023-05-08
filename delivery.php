@@ -119,6 +119,7 @@ require 'vendor/components/connect.php' ?>
         <?php include "vendor/components/footer.php" ?>
     </div>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/js/popup.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/shop.js"></script>
 </body>

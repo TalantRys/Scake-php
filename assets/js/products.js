@@ -1,79 +1,6 @@
 $(function () {
-  loadItems();
-});
-function loadItems() {
-  $.getJSON('assets/database/products.json', function (data) {
-    function loadCakes(num) {
-      let out = '';
-      if (!num) {
-        for (let key in data) {
-          out += '<a data-num="' + data[key].id + '" data-category="' + data[key]['category'] + '" class="products__card card">';
-          out += '<div class="card__image image">';
-          out += '<img src="' + data[key].image + '" alt="' + data[key]['image'] + '">';
-          out += '</div>';
-          out += '<h3 class="card__title title">' + data[key]['name'] + '</h3>';
-          out += '<p class="card__desc">' + data[key]['description'] + '</p>';
-          out += '<div class="card__bottom">';
-          out += '<p class="card__price">' + data[key].price + ' р.</p>';
-          out += '<button id="add-card" class="card__buy">';
-          out += '</button>';
-          out += '</div>';
-          out += '</a>';
-        }
-      } else {
-        for (let i = 1; i <= num; i++) {
-          out += '<a data-num="' + data[i].id + '" data-category="' + data[i]['category'] + '" class="products__card card">';
-          out += '<div class="card__image image">';
-          out += '<img src="' + data[i].image + '" alt="' + data[i]['image'] + '">';
-          out += '</div>';
-          out += '<h3 class="card__title title">' + data[i]['name'] + '</h3>';
-          out += '<p class="card__desc">' + data[i]['description'] + '</p>';
-          out += '<div class="card__bottom">';
-          out += '<p class="card__price">' + data[i].price + ' р.</p>';
-          out += '<button id="add-card" class="card__buy">';
-          out += '</button>';
-          out += '</div>';
-          out += '</a>';
-        }
-      }
-      return out;
-    }
-    $('#cakes-cards').html(loadCakes());
-    $('#index-cards').html(loadCakes(6));
-  })
-}
-
-function loadPopup(num) {
-  // --------------------------POPUP
-  $.getJSON('assets/database/products.json', function (data) {
-    let out = '';
-    out += '<div data-target="' + data[num].id + '" class="popup__wrapper products-popup__wrapper">';
-    out += '<span class="products-popup__close icon"></span>';
-    out += '<div class="product-popup__body">';
-    out += '<div class="product-popup__img image">';
-    out += '<img src="' + data[num].image + '" alt="' + data[num]['image'] + '">';
-    out += '</div>';
-    out += '<div class="product-popup__text">';
-    out += '<h2 class="product-popup__title title">' + data[num]['name'] + '</h2>';
-    out += '<div class="product-popup__description scrollbar">';
-    out += '<p>Вес: ' + data[num]['weight'] + ' кг</p>';
-    out += '<p>Тип: ' + data[num]['type'] + '</p>';
-    out += '<p>Калорийность: ' + data[num]['calories'] + ' ккал./100 гр.</p>';
-    out += '<p>Состав: <br>' + data[num]['compound'] + '</p>';
-    out += '<p>Аллергены: ' + data[num]['allergens'] + '</p>';
-    out += '</div>';
-    out += '<div class="product-popup__bottom">';
-    out += '<p class="product-popup__price">Цена: ' + data[num].price + ' р.</p>';
-    out += '<button class="product-popup__button button icon">В корзину</button>';
-    out += '</div>';
-    out += '</div>';
-    out += '</div>';
-    out += '</div>';
-
-    $('#popup').html(out);
-  })
-}
-$(function () {
+  loadItems()
+  // --------------------------ФИЛЬТР
   let filter = $("[data-filter]");
 
   filter.on("click", function (e) {
@@ -95,3 +22,36 @@ $(function () {
     }
   })
 });
+
+// --------------------------ТОВАРЫ
+function loadItems() {
+  $.getJSON('assets/database/products.json', function (data) {
+    $('#cakes-cards').html(loadCakes(data));
+    $('#index-cards').html(loadCakes(data, 6));
+    btnCheck()
+  })
+}
+
+// --------------------------ТОВАРЫ
+function loadCakes(data, num = Object.keys(data).length) {
+  const cakesLength = (num > Object.keys(data).length) ? Object.keys(data).length : num;
+  let out = '';
+  for (let i = 1; i <= cakesLength; i++) {
+    out += `
+    <a data-num="${data[i].id}" data-category="${data[i].category}" class="products__card card">
+      <div class="card__image image">
+        <img src="${data[i].image}" alt="${data[i].name}">
+      </div>
+      <h3 class="card__title title">${data[i].name}</h3>
+      <p class="card__desc">${data[i].description}</p>
+      <div class="card__bottom">
+        <p class="card__price"><span>${data[i].price}</span> р.</p>
+        <button id="add-card" class="card__buy"></button>
+      </div>
+    </a>`
+  }
+  return out;
+}
+
+
+

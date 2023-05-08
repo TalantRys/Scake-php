@@ -1,12 +1,17 @@
-// ---------------------POPUP КОРЗИНЫ
-const shopBtn = document.querySelector(".shop-panel");
-const shopBtnClose = document.querySelector(".shop-panel__button");
-const shopPopup = document.querySelector(".shop-panel-popup");
-const shopPopupWrapper = document.querySelector(".shop-panel-popup__wrapper");
-
 $(document).ready(function () {
   // ---------------------БУРГЕР
   $('.header__burger').on('click', function () {
+    const popup = document.querySelectorAll('.popup')
+    const popupWrapper = document.querySelectorAll('.popup__wrapper')
+    popup.forEach(popup => {
+      if (popup.classList.contains('popup_active')){
+        popup.classList.remove('popup_active')
+        popupWrapper.forEach(popupWrapper =>{
+          popupWrapper.classList.remove('popup__wrapper_active')
+        })
+        $('body').removeClass('lock');
+      }
+    });
     $('.header__list').toggleClass('burger__list');
     $('.header__burger').toggleClass('header__burger_close');
     $('body').toggleClass('lock');
@@ -28,18 +33,4 @@ $(document).ready(function () {
       details[i].removeAttribute("open");
     }
   }
-  // ---------------------POPUP КОРЗИНЫ
-  shopBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    shopPopup.classList.toggle("popup_active");
-    shopPopupWrapper.classList.toggle("popup__wrapper_active");
-    document.querySelector("body").classList.toggle("lock");
-  });
-  shopPopup.addEventListener("click", (e) => {
-    if (e.target == shopPopup || e.target == shopBtnClose) {
-      shopPopup.classList.remove("popup_active");
-      document.querySelector("body").classList.remove("lock");
-      shopPopupWrapper.classList.remove("popup__wrapper_active");
-    }
-  });
 });

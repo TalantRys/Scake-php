@@ -46,6 +46,7 @@
 
 .cakes-nav__button {
     font-size: 24px;
+    display: block;
 }
 
 .cakes__nav li:first-child {

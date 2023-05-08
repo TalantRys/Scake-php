@@ -58,7 +58,8 @@ body.lock{
 a,
 button,
 span {
-  display: block;
+  display: inline-flex;
+  font: inherit;
   text-decoration: none;
   color: inherit;
   background-color: inherit;
@@ -96,23 +97,6 @@ body {
   padding: 0 10px;
 }
 
-.header__nav {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-     -moz-box-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-          align-items: center;
-  height: 70px;
-  margin: 0 auto;
-}
-
 .main__container {}
 
 .footer__container {
@@ -133,9 +117,8 @@ body {
           box-sizing: border-box;
   padding: 0 20px;
 }
-
-@media (max-width:767px) {
-  .header__nav {
-    height: 50px;
+@media (max-width: 575px){
+  .footer__container{
+    padding: 30px 10px 15px;
   }
 }

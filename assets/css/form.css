@@ -200,7 +200,7 @@ label[for=input_message] {
   z-index: 0;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat,
     url(../images/sign-thumb.jpg) no-repeat;
-  background-position: center;
+  background-position: center 10%;
   background-size: cover;
 }
 
@@ -292,7 +292,7 @@ label[for=input_message] {
   }
 }
 @media (max-width: 424px) {
-  .input__error{
+  .form__input._error+.input__error{
     font-size: 12px;
   }
 }
