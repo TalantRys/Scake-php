@@ -7,9 +7,10 @@ $user = 'root';
 
 if($_SERVER['HTTP_HOST'] == 'scake' || $_SERVER['HTTP_HOST'] == 'localhost'){
     // MY LOCAL BASE
-    $link = mysqli_connect('localhost', 'root', 'root', 'scake');
+    $link = new mysqli('localhost', 'root', 'root', 'scake');
 } else {
     // RAILWAY MYSQL BASE
-    $link = mysqli_connect($host, $user, $password, $db, $port);
+    $link = new mysqli($host, $user, $password, $db, $port);
 }
+
 ?>

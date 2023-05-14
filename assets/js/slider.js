@@ -72,30 +72,28 @@ dots.forEach((dot, i) => {
   });
 });
 //-АВТОПЕРЕКЛЮЧЕНИЕ
-var repeater = () => {
-  playSlider = setInterval(nextSlide, 10000);
-};
+var repeater = () => playSlider = setInterval(nextSlide, 10000);
 repeater();
 //-ОСТАНОВКА ПРИ НАВЕДЕНИИ МЫШЬЮ НА СЛАЙДЕР
-sliderBody.addEventListener('mouseover', ()=>{
-  clearInterval(playSlider);
-});
+sliderBody.addEventListener('mouseover', () => clearInterval(playSlider));
 //-ЗАПУСК, КОГДА УБРАЛИ МЫШЬ ИЗ СЛАЙДЕРА
-sliderBody.addEventListener('mouseout',()=>{
-  repeater();
-})
+sliderBody.addEventListener('mouseout', () => repeater())
 
 
 // ---------------------ИЗМЕНЕНИЕ ШАПКИ
 const header = document.querySelector('header');
+const headerCont = document.querySelector('.header__container');
 const slider = document.querySelector('.main__slider');
 const sliderHeight = slider.offsetHeight;
 header.classList.add('header_opacity');
+headerCont.style.backgroundColor = 'unset';
 window.addEventListener('scroll', function () {
   let scrollDistance = window.pageYOffset;
   if (scrollDistance >= sliderHeight) {
     header.classList.remove('header_opacity');
+    headerCont.style.backgroundColor = 'var(--color-red)';
   } else {
     header.classList.add('header_opacity');
+    headerCont.style.backgroundColor = 'unset';
   }
 });

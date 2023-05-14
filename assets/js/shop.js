@@ -4,7 +4,7 @@ const shopOrders = shopPopupWrapper.querySelector('.shop-panel__orders');
 const shopEmptyInfo = shopOrders.querySelector('.shop-panel__title')
 // ЗАГРУЗКА ТОВАРОВ ИЗ LocalStorage ПРИ ПЕРЕХОДЕ НА САЙТ
 let carts = JSON.parse(localStorage.getItem('carts')) || []
-shopOrders.innerHTML = carts.map(cart => renderCardInShop(cart)).join('')
+shopOrders.insertAdjacentHTML('beforeend', carts.map(cart => renderCardInShop(cart)).join(''));
 
 ordersCheck()
 ordersSum()
@@ -144,7 +144,7 @@ function btnCheck() {
 // ДОБАВЛЕНИЕ В LocalStorage
 function addToStorage() {
   const cardInShop = shopOrders.querySelectorAll('.shop-panel__order');
-  let carts = []
+  let carts = [];
   cardInShop.forEach(cart => {
     const productInfo = {
       id: cart.dataset.cartNum,
@@ -153,11 +153,31 @@ function addToStorage() {
       count: cart.querySelector('#count').textContent,
       price: cart.querySelector('.shop-panel__order-price span').textContent
     }
-    carts.push(productInfo)
+    carts.push(productInfo);
   })
-  localStorage.setItem('carts', JSON.stringify(carts))
+  localStorage.setItem('carts', JSON.stringify(carts));
+  addToBase(carts);
 }
+async function addToBase(carts) {
 
+  try {
+    let response = await fetch(`vendor/action/addCart.php`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: 'POST',
+      body: {
+        carts: JSON.stringify(carts)
+      }
+    });
+    if (response.ok) {
+      let result = await response.json();
+      console.log(result);
+    }
+  } catch (error) {
+    alert(error);
+  }
+}
 const shopOrderBtn = shopPopupWrapper.querySelector('.shop-panel__bottom-button');
 shopOrderBtn.addEventListener('click', e => e.preventDefault());
 
@@ -178,5 +198,5 @@ function renderCardInShop(productInfo) {
       </div>
       <input class="shop-panel__button-remove" type="button" value="Убрать">
     </div>
-  </div>`
+  </div>`;
 }

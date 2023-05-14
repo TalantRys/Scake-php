@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('#form');
   form.addEventListener('submit', formSend);
-  
 });
+
 async function formSend(e) {
   e.preventDefault();
   let error = formValidate(form);
@@ -21,16 +21,18 @@ async function formSend(e) {
       }
       if (response.ok) {
         let result = await response.json();
-        if (result.message != 'true'){
+        if (result.message != 'true') {
           alert(result.message);
           form.classList.remove('_loading');
-        } else{
+        } else {
+          setUserToStorage(result);
           form.reset();
           form.classList.remove('_loading');
+          window.addEventListener('error', (error) => localStorage.setItem('error', JSON.stringify(error)))
           window.location.href = result.url;
         }
       } else {
-        alert(`Ошибка отправки письма! Статус: ${response.status} ${response.statusText}`);
+        alert(`Ошибка! Статус: ${response.status} ${response.statusText}`);
         form.classList.remove('_loading');
       }
     } catch (error) {
@@ -107,6 +109,11 @@ function nameTest(input) {
   return /^[А-Я][а-я]+/.test(input.value);
 }
 // --------------РЕГУЛЯРКА ПАРОЛЯ
-function passTest(input){
+function passTest(input) {
   return /^[\w-]{8}/.test(input.value);
+}
+// --------------ДОБАВЛЕНИЕ ID ПОЛЬЗОВАТЕЛЯ В LocalStorage
+async function setUserToStorage(result) {
+  localStorage.setItem('user', JSON.stringify(result['user_id']));
+  cartFromBase(parseInt(result['user_id']));
 }

@@ -25,7 +25,7 @@ $(function () {
 
 // --------------------------ТОВАРЫ
 function loadItems() {
-  $.getJSON('assets/database/products.json', function (data) {
+  $.getJSON('vendor/action/cakes.php', function (data) {
     $('#cakes-cards').html(loadCakes(data));
     $('#index-cards').html(loadCakes(data, 6));
     btnCheck()

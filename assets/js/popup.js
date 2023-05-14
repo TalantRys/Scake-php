@@ -8,6 +8,9 @@ const body = document.querySelector("body")
 const modalOverlay = document.querySelector(".products-popup");
 let modals
 $(document).on("click", ".products__card", (e) => {
+  if ($('.sign-list').hasClass('burger__list active')) {
+    $('.sign-list').toggleClass('burger__list active');
+  }
   if (e.target.id !== 'add-card') {
     let num = e.currentTarget.getAttribute("data-num");
     loadPopup(num);
@@ -51,6 +54,9 @@ shopBtn.addEventListener("click", (e) => {
     $('.header__burger').removeClass('header__burger_close');
     $('.header__list').removeClass('burger__list');
   }
+  if ($('.sign-list').hasClass('burger__list active')) {
+    $('.sign-list').toggleClass('burger__list active');
+  }
   shopPopup.classList.toggle("popup_active");
   shopPopupWrapper.classList.toggle("popup__wrapper_active");
   body.classList.toggle("lock");
@@ -64,13 +70,13 @@ shopPopup.addEventListener("click", (e) => {
 });
 // --------------------------POPUP
 function loadPopup(num) {
-  $.getJSON('assets/database/products.json', function (data) {
+  $.getJSON('vendor/action/cakes.php', function (data) {
     let out = '';
     out += `<div data-target="${data[num].id}" class="popup__wrapper products-popup__wrapper">
       <span class="products-popup__close icon"></span>
       <div class="product-popup__body">
         <div class="product-popup__img image">
-          <img src="${data[num].image}" alt="${data[num]['image']}">
+          <img src="${data[num].image}" alt="${data[num]['name']}">
         </div>
         <div class="product-popup__text">
           <h2 class="product-popup__title title">${data[num]['name']}</h2>

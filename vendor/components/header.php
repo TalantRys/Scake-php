@@ -10,20 +10,17 @@
             </ul>
             <button class="header__burger"></button>
             <ul class="header__buttons">
-                <li><a href="#" class="header__button shop-panel icon">
-                <span class="shop-panel__length"></span>    
-                Корзина
-                </a></li>
                 <li>
-                    <?php if (!isset($_SESSION['user'])) { ?>
-                        <a href="sign-in.php" class="header__button header__button-sign icon">Войти</a>
-                    <?php } elseif ($_SESSION['user']) { ?>
-                        <a href="vendor/action/logout.php" class="header__button header__button-sign icon">
-                            Выйти (<?= $_SESSION['user']['login']?>)
-                        </a>
-                    <?php } ?>
+                    <a href="#" class="header__button shop-panel icon">
+                        <span class="shop-panel__length"></span>
+                        Корзина
+                    </a>
+                </li>
+                <li class="sign-list__wrapper">
+                    <a href="sign-in.php" class="header__button header__button_sign icon">Войти</a>
                 </li>
             </ul>
+
         </nav>
     </div>
 </header>
@@ -36,7 +33,7 @@
                 <h2 class="shop-panel__title title">Корзина пуста</h2>
             </div>
             <div class="shop-panel__bottom">
-                <form action="" method="post">
+                <form method="post">
                     <p>Всего: <span class="shop-panel__sum">0</span> р.</p>
                     <input class="shop-panel__bottom-button button" type="submit" value="Оформить заказ">
                 </form>

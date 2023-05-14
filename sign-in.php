@@ -32,7 +32,7 @@ require 'vendor/components/connect.php';?>
                   </label>
                 </div>
                 <div class="contact-us__bottom">
-                  <input class="sign-in-form__submit form__input" type="submit" value="Зарегистрироваться" name="signUp">
+                  <input class="sign-in-form__submit form__input" type="submit" value="Авторизоваться" name="signUp">
                   <p class="sign-in__link">Нет аккаунта? <a href="sign-up.php">Зарегистрироваться</a></p>
                   <span class="input__error input__error_bottom"><!--Ошибка--></span>
                 </div>
