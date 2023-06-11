@@ -1,14 +1,14 @@
 <?php include '../components/connect.php';
 session_start();
-$carts = json_decode($_POST['carts'], true);
-
 $userId = $_SESSION['user']['id'];
-for ($i = 0; $i < count($carts); $i++) {
-  $id[$i] = $carts[$i]['id'];
-  $count[$i] = $carts[$i]['count'];
-  $price[$i] = (int)$carts[$i]['count'] * (int)$carts[$i]['price'];
-  $sql = $link->query("SELECT * FROM `shop-cart` WHERE `user_id` = '$userId' AND `cake_id` = '$id[$i]'");
-  if ($sql->num_rows == 0) {
+$notAuthCarts = json_decode($_POST['notAuthCarts'], true);
+
+for ($i = 0; $i < count($notAuthCarts); $i++) {
+  $id[$i] = $notAuthCarts[$i]['id'];
+  $count[$i] = $notAuthCarts[$i]['count'];
+  $price[$i] = (int)$notAuthCarts[$i]['count'] * (int)$notAuthCarts[$i]['price'];
+  $cartsInBase = $link->query("SELECT * FROM `shop-cart` WHERE `user_id` = '$userId' AND `cake_id` = '$id[$i]'") or die($link->error);
+  if ($cartsInBase->num_rows == 0) {
     $sql = $link->query(
       "INSERT INTO `shop-cart`(`cake_id`, `user_id`, `count`, `counted_price`) 
         VALUES ('$id[$i]','$userId','$count[$i]','$price[$i]')"
@@ -22,6 +22,7 @@ for ($i = 0; $i < count($carts); $i++) {
     if (!$sql) $err = 'Не удалось выполнить UPDATE ' . $link->error;
   }
 }
-$message = "Добавлено $i товаров";
+
+$message = "Объединено $i товаров";
 $response = ['message' => $message ?? '', 'err' => $err ?? 'Нет ошибок'];
 echo json_encode($response, JSON_UNESCAPED_UNICODE);

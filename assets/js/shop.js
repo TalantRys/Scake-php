@@ -3,11 +3,18 @@ const shopOrders = shopPopupWrapper.querySelector('.shop-panel__orders');
 // НАДПИСЬ ПРИ ПУСТОЙ КОРЗИНЕ
 const shopEmptyInfo = shopOrders.querySelector('.shop-panel__title')
 // ЗАГРУЗКА ТОВАРОВ ИЗ LocalStorage ПРИ ПЕРЕХОДЕ НА САЙТ
-let carts = JSON.parse(localStorage.getItem('carts')) || []
-shopOrders.insertAdjacentHTML('beforeend', carts.map(cart => renderCardInShop(cart)).join(''));
+loadFromStorage()
+setTimeout(() => {
+  ordersCheck()
+  ordersSum()
+}, 1000);
 
-ordersCheck()
-ordersSum()
+function loadFromStorage() {
+  let carts = JSON.parse(localStorage.getItem('carts')) || [];
+  let cartInShop = shopOrders.querySelectorAll('.shop-panel__order') || null;
+  if (cartInShop) cartInShop.forEach(cart => cart.remove());
+  shopOrders.insertAdjacentHTML('beforeend', carts.map(cart => renderCardInShop(cart)).join(''));
+}
 document.addEventListener('click', (e) => {
   // КНОПКИ В СЧЁТЧИКЕ КОРЗИНЫ
   let counter;
@@ -20,7 +27,9 @@ document.addEventListener('click', (e) => {
     if (parseInt(counter.textContent) > 1) --counter.textContent;
     // УДАЛЕНИЕ ТОВАРА ИЗ КОРЗИНЫ
     else if (parseInt(counter.textContent) == 1) {
-      e.target.closest('.shop-panel__order').remove();
+      let cart = e.target.closest('.shop-panel__order');
+      if (Object.keys(userId).length > 0) deleteFromBase(cart.dataset.cartNum);
+      cart.remove();
     }
     addToStorage()
     btnCheck()
@@ -29,7 +38,9 @@ document.addEventListener('click', (e) => {
   }
   // УДАЛЕНИЕ ТОВАРА ИЗ КОРЗИНЫ ПРИ НАЖАТИИ "УБРАТЬ"
   if (e.target.classList == 'shop-panel__button-remove') {
-    e.target.closest('.shop-panel__order').remove();
+    let cart = e.target.closest('.shop-panel__order');
+    if (Object.keys(userId).length > 0) deleteFromBase(cart.dataset.cartNum);
+    cart.remove();
     addToStorage()
     btnCheck()
     ordersCheck()
@@ -156,30 +167,30 @@ function addToStorage() {
     carts.push(productInfo);
   })
   localStorage.setItem('carts', JSON.stringify(carts));
-  addToBase(carts);
+  if (Object.keys(userId).length > 0) addToBase(carts);
 }
+// ДОБАВЛЕНИЕ В БАЗУ
 async function addToBase(carts) {
-
+  let cartsData = new FormData();
+  cartsData.append('carts', JSON.stringify(carts))
   try {
-    let response = await fetch(`vendor/action/addCart.php`, {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: 'POST',
-      body: {
-        carts: JSON.stringify(carts)
-      }
-    });
+    let response = await fetch(`vendor/action/addCart.php`, { method: 'POST', body: cartsData });
     if (response.ok) {
       let result = await response.json();
       console.log(result);
     }
-  } catch (error) {
-    alert(error);
-  }
+  } catch (error) { alert(error); }
 }
-const shopOrderBtn = shopPopupWrapper.querySelector('.shop-panel__bottom-button');
-shopOrderBtn.addEventListener('click', e => e.preventDefault());
+// УДАЛЕНИЕ ИЗ БАЗЫ
+async function deleteFromBase(cartId) {
+  try {
+    let response = await fetch(`vendor/action/deleteCart.php?id=${cartId}`);
+    if (response.ok) {
+      let result = await response.json();
+      console.log(result);
+    }
+  } catch (error) { alert(error); }
+}
 
 // СТРУКТУРА ТОВАРОВ В КОРЗИНЕ
 function renderCardInShop(productInfo) {

@@ -21,14 +21,16 @@
   inset: 0;
   border-radius: 24px;
 }
-
-.form::after {
+.order__form.form::before{
+  border-radius: 0;
+}
+.form::after, .popup::after {
   position: absolute;
   z-index: 5;
   width: 50px;
   height: 50px;
   border: 5px solid var(--color-orange-2);
-  border-bottom-color: var(--color-violet);
+  border-bottom-color: var(--color-gray);
   border-radius: 50%;
   inset: 0;
   margin: auto;
@@ -41,20 +43,20 @@
 }
 
 .form::before,
-.form::after {
+.form::after, .popup::after {
   content: '';
   opacity: 0;
   visibility: hidden;
   transition: opacity .3s ease, visibility .3s ease;
 }
 
-.form._loading::before,
-.form._loading::after {
+._loading::before,
+._loading::after {
   opacity: 1;
   visibility: visible;
 }
 
-.form._loading::after {
+._loading::after {
   animation: rotation 1s linear infinite;
 }
 
@@ -88,6 +90,7 @@ label[for=input_message] {
   color: white;
   border-radius: 24px;
   width: 100%;
+  height: 47px;
   padding: 15px;
   transition: outline .3s ease;
 }
@@ -96,7 +99,7 @@ label[for=input_message] {
   opacity: 1;
 }
 
-.form__input._error {
+.form__input._error,.form__input._error+.form__input {
   outline: 5px solid rgb(255, 54, 54);
 }
 
@@ -104,7 +107,7 @@ label[for=input_message] {
   display: none;
 }
 
-.form__input._error+.input__error {
+.form__input._error~.input__error {
   display: block;
   position: absolute;
   bottom: -22px;
@@ -140,7 +143,7 @@ label[for=input_message] {
   align-items: center;
 }
 
-.contact-us__bottom input {
+.form__submit {
   flex: none;
   font-size: inherit;
   font-weight: 600;
@@ -150,7 +153,7 @@ label[for=input_message] {
 }
 
 .form__input,
-.contact-us__bottom input {
+.form__submit {
   transition: all .3s ease;
 }
 
@@ -158,16 +161,16 @@ label[for=input_message] {
   outline-color: #fff;
 }
 
-.contact-us__bottom input:focus {
+.form__submit:focus {
   outline-color: var(--color-orange-2);
 }
 
 .form__input:hover,
-.contact-us__bottom input:hover {
+.form__submit:hover {
   outline-color: #fff;
 }
 
-.contact-us__bottom input:active {
+.form__submit:active {
   background-color: #fff;
   color: var(--color-black);
   outline-color: #fff;
@@ -225,8 +228,8 @@ label[for=input_message] {
   gap: 15px;
 }
 
-.sign-up .contact-us__bottom input,
-.sign-in .contact-us__bottom input {
+.sign-up .form__submit,
+.sign-in .form__submit {
   width: 100%;
 }
 
@@ -252,7 +255,7 @@ label[for=input_message] {
     row-gap: 15px;
   }
 
-  .contact-us__bottom input {
+  .form__submit {
     width: 100%;
   }
 
@@ -283,7 +286,7 @@ label[for=input_message] {
     font-size: 12px;
   }
 
-  .contact-us__bottom input {
+  .form__submit {
     font-size: 16px;
   }
 
@@ -292,7 +295,7 @@ label[for=input_message] {
   }
 }
 @media (max-width: 424px) {
-  .form__input._error+.input__error{
+  .form__input._error~.input__error{
     font-size: 12px;
   }
 }

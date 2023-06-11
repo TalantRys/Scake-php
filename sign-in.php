@@ -32,7 +32,7 @@ require 'vendor/components/connect.php';?>
                   </label>
                 </div>
                 <div class="contact-us__bottom">
-                  <input class="sign-in-form__submit form__input" type="submit" value="Авторизоваться" name="signUp">
+                  <input class="sign-in-form__submit form__submit form__input" type="submit" value="Авторизоваться" name="signUp">
                   <p class="sign-in__link">Нет аккаунта? <a href="sign-up.php">Зарегистрироваться</a></p>
                   <span class="input__error input__error_bottom"><!--Ошибка--></span>
                 </div>
@@ -44,8 +44,12 @@ require 'vendor/components/connect.php';?>
     <?php include "vendor/components/footer.php" ?>
   </div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="assets/js/popup.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+  <script src="assets/js/datetime-input.js"></script>
+  <script src="assets/js/phone-mask.js"></script>
   <script src="assets/js/form.js"></script>
+  <script src="assets/js/popup.js"></script>
   <script src="assets/js/script.js"></script>
   <script src="assets/js/shop.js"></script>
 </body>

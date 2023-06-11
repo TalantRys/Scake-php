@@ -148,9 +148,7 @@ header.header_opacity{
 }
 
 .header__burger {
-    -webkit-mask: url(../images/icons/burger.svg) center / 100% no-repeat;
-    mask: url(../images/icons/burger.svg) center / 100% no-repeat;
-    background-color: #fff;
+    background: url(../images/icons/burger.svg) center / 100% no-repeat;
     width: 40px;
     height: 40px;
     display: none;
@@ -158,8 +156,7 @@ header.header_opacity{
 }
 
 .header__burger_close {
-    -webkit-mask: url(../images/icons/close.svg) center / 100% no-repeat;
-    mask: url(../images/icons/close.svg) center / 100% no-repeat;
+    background: url(../images/icons/close.svg) center / 100% no-repeat;
     transform: rotate(360deg);
 }
 

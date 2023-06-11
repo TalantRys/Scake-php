@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('#form');
-  form.addEventListener('submit', formSend);
+  const forms = document.querySelectorAll('#form');
+  Array.from(forms).forEach(form => form.addEventListener('submit', formSend));
 });
 
 async function formSend(e) {
   e.preventDefault();
+  let form = e.target;
   let error = formValidate(form);
   let formData = new FormData(form);
   let fetchSettings = { method: 'POST', body: formData };
@@ -18,18 +19,38 @@ async function formSend(e) {
         response = await fetch('vendor/action/signIn.php', fetchSettings);
       } else if (form.classList.contains('contact-us__form')) {
         response = await fetch('vendor/action/contact.php', fetchSettings);
+      } else if (form.classList.contains('order__form')) {
+        let totalPrice = form.querySelector('.order-form__sum');
+        formData.append('carts', localStorage.getItem('carts'))
+        formData.append('totalPrice', parseInt(totalPrice.textContent))
+        response = await fetch('vendor/action/order.php', fetchSettings);
       }
       if (response.ok) {
         let result = await response.json();
         if (result.message != 'true') {
-          alert(result.message);
-          form.classList.remove('_loading');
+          if (result.message == 'order-true') {
+            form.classList.remove('_loading');
+            localStorage.removeItem('carts');
+            loadFromStorage();
+            btnCheck()
+            ordersCheck()
+            ordersSum()
+            closeAllPopup();
+            let confirmResult = confirm(`Заказ под номером ${result.orderNumber} оформлен! Позже мы напишем вам на почту.\r\nХотите посмотреть ваш заказ?`);
+            if (confirmResult == true) window.location.href = 'orders.php';
+          } else {
+            alert(result.message);
+            form.classList.remove('_loading');
+          }
         } else {
-          setUserToStorage(result);
-          form.reset();
-          form.classList.remove('_loading');
-          window.addEventListener('error', (error) => localStorage.setItem('error', JSON.stringify(error)))
-          window.location.href = result.url;
+          // --------------ДОБАВЛЕНИЕ ID ПОЛЬЗОВАТЕЛЯ В LocalStorage
+          let mergeStatus = await mergeCarts();
+          if (mergeStatus != false) {
+            localStorage.setItem('user', JSON.stringify(result['user_id']));
+            form.reset();
+            form.classList.remove('_loading');
+            window.location.href = result.url;
+          } else form.classList.remove('_loading');
         }
       } else {
         alert(`Ошибка! Статус: ${response.status} ${response.statusText}`);
@@ -44,10 +65,9 @@ async function formSend(e) {
 
 function formValidate(form) {
   let error = 0;
-  let spanErrors = form.querySelectorAll('.input__error');
-  let formReq = form.querySelectorAll('._required');
-
-  for (let i = 0; i < formReq.length && spanErrors.length; i++) {
+  let formReq = form.querySelectorAll('._required[name]');
+  let spanErrors = form.querySelectorAll('._required[name]~.input__error');
+  for (let i = 0; i < formReq.length; i++) {
     const input = formReq[i];
     const span = spanErrors[i];
     input.classList.remove('_error');
@@ -64,6 +84,12 @@ function formValidate(form) {
         input.classList.add('_error');
         error++;
       }
+    } else if (input.getAttribute('type') == 'password' && input.value !== '') {
+      if (!passTest(input)) {
+        span.innerHTML = 'Необходимо минимум 8 символов';
+        input.classList.add('_error');
+        error++;
+      }
     } else if (input.getAttribute('name') == 'name' && input.value !== '') {
       if (!nameTest(input)) {
         span.innerHTML = 'Введите имя с большой буквы';
@@ -76,9 +102,15 @@ function formValidate(form) {
         input.classList.add('_error');
         error++;
       }
-    } else if (input.getAttribute('type') == 'password' && input.value !== '') {
-      if (!passTest(input)) {
-        span.innerHTML = 'Необходимо минимум 8 символов';
+    } else if (input.getAttribute('name') == 'select' && input.value != 'Выберите ваш район') {
+      input.classList.remove('_error');
+    } else if ((input.getAttribute('name') == 'date' || input.getAttribute('name') == 'time')
+      && input.value !== '') {
+      span.innerHTML = '';
+      input.classList.remove('_error');
+    } else if (input.getAttribute('name') == 'address' && input.value !== '') {
+      if (!addressTest(input)) {
+        span.innerHTML = 'Пример: ул. Ивана 1/1, кв. 1';
         input.classList.add('_error');
         error++;
       }
@@ -112,8 +144,28 @@ function nameTest(input) {
 function passTest(input) {
   return /^[\w-]{8}/.test(input.value);
 }
-// --------------ДОБАВЛЕНИЕ ID ПОЛЬЗОВАТЕЛЯ В LocalStorage
-async function setUserToStorage(result) {
-  localStorage.setItem('user', JSON.stringify(result['user_id']));
-  cartFromBase(parseInt(result['user_id']));
+// --------------РЕГУЛЯРКА АДРЕСА
+function addressTest(input) {
+  return /^[ул|пер|пр|б-р]*[\.\s]*[А-Яа-я\-]{2,}\s\d{1,3}[\\\d{1,3}]*[\,\s\-]*[кв\.]*\s*\d{1,3}$/.test(input.value);
+}
+async function mergeCarts() {
+  let carts = JSON.parse(localStorage.getItem('carts')) || [];
+  if (carts.length > 0) {
+    let cartsData = new FormData();
+    cartsData.append('notAuthCarts', JSON.stringify(carts));
+    try {
+      let response = await fetch('vendor/action/mergeCart.php', { method: 'POST', body: cartsData })
+      if (response.ok) {
+        let result = await response.json();
+        console.log(result);
+        return true;
+      } else {
+        alert(`Ошибка синхронизации корзины ${response.status} ${response.statusText}`);
+        return false;
+      }
+    } catch (error) {
+      alert(`Ошибка: ${error}`);
+      return false;
+    }
+  }
 }

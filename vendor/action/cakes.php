@@ -1,10 +1,11 @@
 <?php include '../components/connect.php';
+$where = isset($_GET['num']) ? "WHERE `cakes`.`id` = {$_GET['num']}" : '';
 $cards = $link->query(
   "SELECT `cakes`.*, `categories`.`name` as `cat_name`, `types`.`name` as `type_name`
     FROM `cakes` 
       LEFT JOIN `categories` ON `cakes`.`category_id` = `categories`.`id` 
-      LEFT JOIN `types` ON `cakes`.`type_id` = `types`.`id`
-    ORDER BY `cakes`.`id` ASC"
+      LEFT JOIN `types` ON `cakes`.`type_id` = `types`.`id` 
+      $where ORDER BY `cakes`.`id` ASC"
 );
 $result = [];
 $i = 1;

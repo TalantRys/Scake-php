@@ -119,6 +119,11 @@ require 'vendor/components/connect.php' ?>
         <?php include "vendor/components/footer.php" ?>
     </div>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="assets/js/datetime-input.js"></script>
+    <script src="assets/js/phone-mask.js"></script>
+    <script src="assets/js/form.js"></script>
     <script src="assets/js/popup.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/shop.js"></script>

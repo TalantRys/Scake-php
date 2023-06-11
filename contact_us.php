@@ -46,7 +46,7 @@ require 'vendor/components/connect.php' ?>
                 <span class="input__error"><!--ОШИБКА ПРИ ЗАПОЛНЕНИИ--></span>
               </label>
               <div class="contact-us__bottom">
-                <input class="contact-us__input form__input" type="submit" name="submit" placeholder="Отправить" value="Отправить">
+                <input class="contact-us__input form__submit form__input" type="submit" name="submit" placeholder="Отправить" value="Отправить">
                 <p>Мы отвечаем через 1-2 дня. Спасибо за ожидание!</p>
               </div>
             </form>
@@ -72,6 +72,9 @@ require 'vendor/components/connect.php' ?>
     <?php include "vendor/components/footer.php" ?>
   </div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+  <script src="assets/js/datetime-input.js"></script>
   <script src="assets/js/phone-mask.js"></script>
   <script src="assets/js/form.js"></script>
   <script src="assets/js/popup.js"></script>

@@ -18,8 +18,15 @@
   --color-gray: #6D6875;
   --color-black: #3C4043;
 }
+/* ---------------------СКРОЛЛ ДЛЯ FIREFOX */
+*{
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-black) transparent;
+}
+/* ---------------------СКРОЛЛ ДЛЯ ДРУГИХ БРАУЗЕРОВ*/
 body::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -36,6 +43,7 @@ body.lock{
 }
 .scrollbar::-webkit-scrollbar{
   width: 3px;
+  height: 5px;
 }
 .scrollbar::-webkit-scrollbar-thumb{
   -webkit-border-radius: 10px;

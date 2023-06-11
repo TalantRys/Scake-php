@@ -16,7 +16,7 @@ $mail->IsHTML(true);
 // Настройки вашей почты
 $mail->Host       = 'smtp.mail.ru'; // SMTP сервера вашей почты
 $mail->Username   = 'rtalant02@mail.ru'; // Логин на почте
-$mail->Password   = 'y9GEhrewnJW2khTUd6ka'; // Пароль на почте
+$mail->Password   = '0kuwFPumt7vGkjr5nauv'; // Пароль на почте
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 $mail->Port       = 587;
@@ -37,7 +37,7 @@ $body = str_replace('%email%', $email, $body);
 $body = str_replace('%number%', $number, $body);
 $body = str_replace('%message%', $textarea, $body);
 
-$mail->setFrom($email);
+$mail->setFrom('rtalant02@mail.ru');
 $mail->addAddress("rtalant02@mail.ru"); // Здесь введите Email, куда отправлять
 $mail->Subject = "Письмо от " . $email;
 $mail->MsgHTML($body);

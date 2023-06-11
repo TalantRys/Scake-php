@@ -62,7 +62,7 @@ require 'vendor/components/connect.php' ?>
           </div>
           <a href="cakes.php" class="products__link">Все товары <img src="assets/images/icons/long-arrow-right.svg" alt="long-arrow-right"></a>
         </div>
-        <div id="popup" class="popup products-popup">
+        <div id="popup" class="popup products-popup scrollbar">
           <!-- POPUP ДЛЯ ТОВАРОВ ИЗ JSON -->
         </div>
       </section>
@@ -100,6 +100,11 @@ require 'vendor/components/connect.php' ?>
     <?php include "vendor/components/footer.php" ?>
   </div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+  <script src="assets/js/datetime-input.js"></script>
+  <script src="assets/js/phone-mask.js"></script>
+  <script src="assets/js/form.js"></script>
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/products.js"></script>
   <script src="assets/js/slider.js"></script>

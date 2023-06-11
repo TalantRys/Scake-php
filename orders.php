@@ -1,6 +1,11 @@
 <?php
 session_start();
-require 'vendor/components/connect.php' ?>
+require 'vendor/components/connect.php';
+if (!isset($_SESSION['user']['id'])) {
+  header('location: index.php');
+}
+$user_id = $_GET['id'];
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -19,30 +24,16 @@ require 'vendor/components/connect.php' ?>
         <h2 class="orders__title title">Ваши заказы</h2>
         <div class="orders__container container">
           <div class="products__cards" id="orders-cards">
-            <table>
-              <thead>
-                <tr>
-                  <th>№</th>
-                  <th>Название</th>
-                  <th>Количество</th>
-                  <th>Сумма</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>ав</td>
-                  <td>1</td>
-                  <td>12 р.</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>ав</td>
-                  <td>1</td>
-                  <td>12 р.</td>
-                </tr>
-              </tbody>
-            </table>
+            <?php $sql = $link->query("SELECT * FROM `orders` WHERE `user_id`= '$user_id'");
+            while ($order = $sql->fetch_assoc()) {
+              echo $order['orders__number'].PHP_EOL;
+              PHP_EOL;
+              echo $order['orders__date'].PHP_EOL;
+              PHP_EOL;
+              echo $order['total_price'].PHP_EOL;
+              PHP_EOL;
+            }
+            ?>
           </div>
         </div>
       </section>
@@ -50,7 +41,11 @@ require 'vendor/components/connect.php' ?>
     <?php include "vendor/components/footer.php" ?>
   </div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="assets/js/line.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+  <script src="assets/js/datetime-input.js"></script>
+  <script src="assets/js/phone-mask.js"></script>
+  <script src="assets/js/form.js"></script>
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/products.js"></script>
   <script src="assets/js/script.js"></script>

@@ -1,8 +1,7 @@
 // ---------------------ПРОВЕРКА НА НАЛИЧИЕ user
 let userId = JSON.parse(localStorage.getItem('user')) ?? {};
-
+if (Object.keys(userId).length > 0) loadUser(userId);
 $(document).ready(function () {
-  if (Object.keys(userId).length > 0) loadUser(userId);
   // ---------------------БУРГЕР
   $('.header__burger').on('click', () => {
     closeAllPopup();
@@ -43,20 +42,6 @@ $(document).ready(function () {
     }
   }
 });
-// ---------------ЗАКРЫТЬ ВСЕ POPUP
-function closeAllPopup() {
-  const popup = document.querySelectorAll('.popup')
-  const popupWrapper = document.querySelectorAll('.popup__wrapper')
-  popup.forEach(popup => {
-    if (popup.classList.contains('popup_active')) {
-      popup.classList.remove('popup_active')
-      popupWrapper.forEach(popupWrapper => {
-        popupWrapper.classList.remove('popup__wrapper_active')
-      })
-      $('body').removeClass('lock');
-    }
-  })
-}
 // ---------------ВЫХОД ИЗ АККАУНТА
 $(document).on('click', '#logOut', async e => {
   e.preventDefault();
@@ -79,24 +64,22 @@ async function loadUser(userId) {
       let signWrapper = document.querySelector('.sign-list__wrapper');
       if (result.message == 'true') {
         signWrapper.innerHTML = renderUserHtml(result.id, result.login);
-        cartFromBase(result.id)
-      } else {
-        alert(`Ошибка загрузки сессии`);
-      }
+        cartFromBase(result.id);
+      } else alert(`Ошибка загрузки сессии`);
     } else alert(`Ошибка fetch: ${response.status} ${response.statusText}`);
-  } catch (error) {
-    alert(`Ошибка: ${error}`);
-  }
+  } catch (error) {alert(`Ошибка: ${error}`);}
 }
 // ДОБАВЛЕНИЕ КАРТ ИЗ БАЗЫ В LocalStorage
 async function cartFromBase(userId) {
   try {
-    let response = await fetch(`vendor/action/shopCart.php?user_id=${userId}`, { method: 'GET'});
+    let response = await fetch(`vendor/action/shopCart.php?user_id=${userId}`);
     if (response.ok) {
       let result = await response.json();
       localStorage.setItem('carts', JSON.stringify(result));
+      loadFromStorage();
     } else alert(`Ошибка синхронизации корзины: ${response.status} ${response.statusText}`);
   } catch (error) {
+    localStorage.setItem('error', JSON.stringify(error))
     alert(`Ошибка: ${error.message}; Стек вызовов: ${error.stack}`);
   }
 }

@@ -281,9 +281,7 @@ footer a {
   }
   summary:before {  
     right: 0;
-    background-color: white;
-    -webkit-mask: url("../images/icons/bottom-arrow.svg") center / 100% no-repeat;
-    mask: url("../images/icons/bottom-arrow.svg") center / 100% no-repeat;
+    background: url("../images/icons/bottom-arrow.svg") center / 100% no-repeat;
     width: 24px;
     height: 24px;  
     content: "";

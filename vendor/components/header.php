@@ -33,11 +33,65 @@
                 <h2 class="shop-panel__title title">Корзина пуста</h2>
             </div>
             <div class="shop-panel__bottom">
-                <form method="post">
-                    <p>Всего: <span class="shop-panel__sum">0</span> р.</p>
-                    <input class="shop-panel__bottom-button button" type="submit" value="Оформить заказ">
-                </form>
+                <p>Всего: <span class="shop-panel__sum">0</span> р.</p>
+                <button class="shop-panel__bottom-button button">Оформить заказ</button>
             </div>
+        </div>
+    </div>
+</div>
+<div id="order" class="popup products-popup order-popup scrollbar ">
+    <div class="popup__wrapper products-popup__wrapper order-popup__wrapper ">
+        <span class="products-popup__close icon"></span>
+        <div class="order-popup__body">
+            <h2 class="order__title title">Оформление <br>заказа</h2>
+            <div class="order__carts">
+                <h3 class="order__subtitle subtitle">Список товаров</h3>
+                <div class="order__carts-row scrollbar"><!--ТОРТЫ--></div>
+            </div>
+            <form id="form" class="order__form form" method="post">
+                <h2 class="order__subtitle subtitle">Способ получения</h2>
+                <div class="order-form__inputs form__inputs">
+                    <input type="radio" name="radio" id="radio-1" value="Доставка" checked>
+                    <input type="radio" name="radio" id="radio-2" value="Самовывоз">
+                    <label for="radio-1" class="order-form__radio form__radio form__input radio-1">
+                        <div class="dot"></div>
+                        <span class="form__radio-name">Доставка</span>
+                    </label>
+                    <label for="radio-2" class="order-form__radio form__radio form__input radio-2">
+                        <div class="dot"></div>
+                        <span class="form__radio-name">Самовывоз</span>
+                    </label>
+                    <label class="order-form__label form__label" for="select">
+                        <select class="order-form__select form__select form__input _required" name="select" id="select">
+                            <option selected>Выберите ваш район</option>
+                            <!-- РАЙОНЫ -->
+                        </select>
+                        <span class="input__error"></span>
+                    </label>
+                    <p class="order-form__text order__subtitle subtitle">
+                        +<span class="order-form__select-price">0</span> р. (с <span class="order-form__select-type">одноярус</span>.)
+                    </p>
+                    <p class="order-form__address order-form__text order__subtitle subtitle">Наш адрес: г. Омск, ул. просп. Карла Маркса, 10</p>
+                    <label class="order-form__label form__label" for="date">
+                        <input class="order-form__input form__input _required" id="date" type="text" name="date" placeholder="На какое число">
+                        <span class="input__error"></span>
+                    </label>
+                    <label class="order-form__label form__label" for="time">
+                        <input class="order-form__input form__input _required" id="time" type="text" name="time" placeholder="На какое время">
+                        <span class="input__error"></span>
+                    </label>
+                    <label class="order-form__label form__label" for="address">
+                        <input class="order-form__input form__input _required" id="address" type="text" name="address" placeholder="Адрес доставки">
+                        <span class="input__error"></span>
+                    </label>
+                    <label class="order-form__label form__label" for="number">
+                        <input class="order-form__input form__input _required" id="number" type="tel" name="number" maxlength="18" placeholder="Ваш номер телефона">
+                        <span class="input__error"></span>
+                    </label>
+                    <p class="order-form__total-price order__subtitle subtitle">Итого: <span class="order-form__sum">0</span> р.</p>
+                    <input class="order-form__submit form__submit form__input" id="submitBtn" type="submit" name="orderSubmit" value="Перейти к оплате">
+                </div>
+            </form>
         </div>
     </div>
 </div>
