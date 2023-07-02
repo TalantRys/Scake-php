@@ -79,7 +79,7 @@
   <div class="footer__bottom">
     <div class="footer__bottom_container container">
       <hr>
-      <p class="footer__copyright">&copy; 2022 ИСП306 Рыскулов Талант</p>
+      <p class="footer__copyright">&copy; 2023 ИСП306 Рыскулов Талант</p>
     </div>
   </div>
 </footer>

@@ -14,19 +14,20 @@
   z-index: 1;
 }
 
-.form::before {
+.form::before,
+.popup__wrapper::before {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5;
+  z-index: 6;
   inset: 0;
   border-radius: 24px;
 }
-.order__form.form::before{
-  border-radius: 0;
-}
-.form::after, .popup::after {
+
+.form::after,
+.popup__wrapper::after,
+.popup::after {
   position: absolute;
-  z-index: 5;
+  z-index: 6;
   width: 50px;
   height: 50px;
   border: 5px solid var(--color-orange-2);
@@ -43,7 +44,10 @@
 }
 
 .form::before,
-.form::after, .popup::after {
+.form::after,
+.popup__wrapper::before,
+.popup__wrapper::after,
+.popup::after {
   content: '';
   opacity: 0;
   visibility: hidden;
@@ -99,7 +103,8 @@ label[for=input_message] {
   opacity: 1;
 }
 
-.form__input._error,.form__input._error+.form__input {
+.form__input._error,
+.form__input._error+.form__input {
   outline: 5px solid rgb(255, 54, 54);
 }
 
@@ -218,10 +223,12 @@ label[for=input_message] {
 .sign-in .form {
   height: unset;
 }
+
 .sign-up .title,
-.sign-in .title{
+.sign-in .title {
   color: #fff;
 }
+
 .sign-up .contact-us__bottom,
 .sign-in .contact-us__bottom {
   flex-direction: column;
@@ -294,8 +301,9 @@ label[for=input_message] {
     font-size: 12px;
   }
 }
+
 @media (max-width: 424px) {
-  .form__input._error~.input__error{
+  .form__input._error~.input__error {
     font-size: 12px;
   }
 }

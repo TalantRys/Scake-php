@@ -530,7 +530,7 @@ label[for="time"]::after{
 .order-form__address {
     align-self: center;
 }
-.order-form__address{
+.order-form__address.order-form__text{
     display: none;
     text-align: center;
     grid-area: addressText;
@@ -549,6 +549,9 @@ label[for="time"]::after{
     width: 150px;
 }
 @media (max-width: 1023px) and (max-height: 1023px){
+    .popup{
+        padding: 0;
+    }
     .popup__wrapper {
         border-radius: 0;
     }
@@ -693,6 +696,15 @@ label[for="time"]::after{
         "time time"
         "address address"
         "number number"
+        "price price"
+        "submit submit";
+    }
+    .order-form__inputs.form__inputs.grid_change{
+        grid-template-areas:
+        "radio-1 radio-2"
+        "addressText addressText"
+        "date date"
+        "time time"
         "price price"
         "submit submit";
     }

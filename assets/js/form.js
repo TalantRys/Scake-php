@@ -20,6 +20,8 @@ async function formSend(e) {
       } else if (form.classList.contains('contact-us__form')) {
         response = await fetch('vendor/action/contact.php', fetchSettings);
       } else if (form.classList.contains('order__form')) {
+        form.classList.remove('_loading');
+        orderPopupWrapper.classList.add('_loading');
         let totalPrice = form.querySelector('.order-form__sum');
         formData.append('carts', localStorage.getItem('carts'))
         formData.append('totalPrice', parseInt(totalPrice.textContent))
@@ -29,18 +31,20 @@ async function formSend(e) {
         let result = await response.json();
         if (result.message != 'true') {
           if (result.message == 'order-true') {
-            form.classList.remove('_loading');
+            form.reset();
+            orderPopupWrapper.classList.remove('_loading');
             localStorage.removeItem('carts');
             loadFromStorage();
             btnCheck()
             ordersCheck()
             ordersSum()
             closeAllPopup();
-            let confirmResult = confirm(`Заказ под номером ${result.orderNumber} оформлен! Позже мы напишем вам на почту.\r\nХотите посмотреть ваш заказ?`);
-            if (confirmResult == true) window.location.href = 'orders.php';
+            let confirmResult = confirm(`Заказ под номером ${result.orderNumber} оформлен! О его готовности мы сообщим по предоставленным данным.\r\nХотите посмотреть ваш заказ?`);
+            if (confirmResult == true) window.location.href = `orders.php?id=${result.userId}`;
           } else {
             alert(result.message);
             form.classList.remove('_loading');
+            orderPopupWrapper.classList.remove('_loading');
           }
         } else {
           // --------------ДОБАВЛЕНИЕ ID ПОЛЬЗОВАТЕЛЯ В LocalStorage
@@ -49,15 +53,18 @@ async function formSend(e) {
             localStorage.setItem('user', JSON.stringify(result['user_id']));
             form.reset();
             form.classList.remove('_loading');
+            orderPopupWrapper.classList.remove('_loading');
             window.location.href = result.url;
-          } else form.classList.remove('_loading');
+          } else {form.classList.remove('_loading'); orderPopupWrapper.classList.remove('_loading');}
         }
       } else {
         alert(`Ошибка! Статус: ${response.status} ${response.statusText}`);
         form.classList.remove('_loading');
+            orderPopupWrapper.classList.remove('_loading');
       }
     } catch (error) {
       alert("Ошибка: " + error);
+            orderPopupWrapper.classList.remove('_loading');
       form.classList.remove('_loading');
     }
   }
@@ -134,11 +141,11 @@ function telTest(input) {
 }
 // --------------РЕГУЛЯРКА ЛОГИНА
 function loginTest(input) {
-  return /^[\wА-Яа-я\-]{1,19}$/.test(input.value);
+  return /^[\wА-ЯЁа-яё\-]{1,19}$/.test(input.value);
 }
 // --------------РЕГУЛЯРКА ИМЕНИ
 function nameTest(input) {
-  return /^[А-Я][а-я]+/.test(input.value);
+  return /^[А-ЯЁ][а-яё]+/.test(input.value);
 }
 // --------------РЕГУЛЯРКА ПАРОЛЯ
 function passTest(input) {
@@ -146,7 +153,7 @@ function passTest(input) {
 }
 // --------------РЕГУЛЯРКА АДРЕСА
 function addressTest(input) {
-  return /^[ул|пер|пр|б-р]*[\.\s]*[А-Яа-я\-]{2,}\s\d{1,3}[\\\d{1,3}]*[\,\s\-]*[кв\.]*\s*\d{1,3}$/.test(input.value);
+  return /^[ул|пер|пр|бр]{2,3}\.\s+[А-ЯЁа-яё\-]{2,}\s\d{1,3}[\/\d{1,3}]*\,\s*кв\.*\s*\d{1,3}$/.test(input.value);
 }
 async function mergeCarts() {
   let carts = JSON.parse(localStorage.getItem('carts')) || [];

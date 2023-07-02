@@ -9,6 +9,7 @@
 @import url(about-main.css);
 @import url(cakes-main.css);
 @import url(delivery-main.css);
+@import url(orders.css);
 
 :root {
   --color-orange-1: #FFCDB2;

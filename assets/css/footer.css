@@ -158,8 +158,69 @@ footer a {
 .pay__block img:not(:last-child) {
   margin-right: 10px;
 }
-.footer__burger{
-  display: none;
+details:focus{
+  border: unset;
+  outline: unset;
+}
+details{
+  display:block;
+  width:100%;
+  overflow:hidden;
+}
+.footer__burger ul{
+  list-style: none;
+}
+.footer__burger li{
+  margin-bottom: 20px;
+}
+.footer__burger ul:last-child li:last-child{
+  margin: 0;
+}
+summary::-webkit-details-marker{display:none;}
+summary::-moz-list-bullet{list-style-type:none;}
+summary::marker{display:none;} 
+summary {
+   display:block;
+   cursor: pointer;
+   position: relative;
+}
+summary:before {  
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: url("../images/icons/bottom-arrow.svg") center / 100% no-repeat;
+  width: 24px;
+  height: 24px;  
+  content: "";
+  position: absolute;
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: -webkit-transform .5s ease;
+  -moz-transition: transform .5s ease, -moz-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease, -webkit-transform .5s ease, -moz-transform .5s ease;
+}
+details[open] > summary:before {
+  -webkit-transform: rotate(180deg);
+     -moz-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+details[open] summary ~ *{ 
+  -webkit-animation: sweep .3s ease; 
+     -moz-animation: sweep .3s ease; 
+          animation: sweep .3s ease;
+}
+@-webkit-keyframes sweep {
+  0%    {opacity: 0;}
+  100%  {opacity: 1;}
+}
+@-moz-keyframes sweep {
+  0%    {opacity: 0;}
+  100%  {opacity: 1;}
+}
+@keyframes sweep {
+  0%    {opacity: 0;}
+  100%  {opacity: 1;}
 }
 @media (max-width:1200px) {
   
@@ -197,6 +258,11 @@ footer a {
   }
   .footer__left{
     width: 100%;
+  }
+}
+@media (min-width:575px) {
+  .footer__burger{
+    display: none;
   }
 }
 @media (max-width:575px) {
@@ -255,64 +321,6 @@ footer a {
   }
   .footer__list{
     display: none;
-  }
-  .footer__burger{
-    display:block;
-    width:100%;
-    overflow:hidden;
-  }
-  .footer__burger ul{
-    list-style: none;
-  }
-  .footer__burger li{
-    margin-bottom: 20px;
-  }
-  .footer__burger ul:last-child li:last-child{
-    margin: 0;
-  }
-  summary::-webkit-details-marker{display:none;}
-  summary::-moz-list-bullet{list-style-type:none;}
-  summary::marker{display:none;} 
-  summary {
-     display:block;
-     font-size:1.4em;
-     cursor: pointer;
-     position: relative;
-  }
-  summary:before {  
-    right: 0;
-    background: url("../images/icons/bottom-arrow.svg") center / 100% no-repeat;
-    width: 24px;
-    height: 24px;  
-    content: "";
-    position: absolute;
-    -webkit-transition: -webkit-transform .5s ease;
-    transition: -webkit-transform .5s ease;
-    -moz-transition: transform .5s ease, -moz-transform .5s ease;
-    transition: transform .5s ease;
-    transition: transform .5s ease, -webkit-transform .5s ease, -moz-transform .5s ease;
-  }
-  details[open] > summary:before {
-    -webkit-transform: rotate(180deg);
-       -moz-transform: rotate(180deg);
-            transform: rotate(180deg);
-  }
-  details[open] summary ~ *{ 
-    -webkit-animation: sweep .3s alternate ease; 
-       -moz-animation: sweep .3s alternate ease; 
-            animation: sweep .3s alternate ease;
-  }
-  @-webkit-keyframes sweep {
-    0%    {opacity: 0;}
-    100%  {opacity: 1;}
-  }
-  @-moz-keyframes sweep {
-    0%    {opacity: 0;}
-    100%  {opacity: 1;}
-  }
-  @keyframes sweep {
-    0%    {opacity: 0;}
-    100%  {opacity: 1;}
   }
 }
 @media (max-width:424px) {

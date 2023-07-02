@@ -53,13 +53,13 @@ shopPopup.addEventListener("click", (e) => {
 // --------------------------POPUP ОФОРМЛЕНИЯ ЗАКАЗА
 orderBtn.addEventListener('click', async e => {
   e.preventDefault();
-  if (Object.keys(userId).length < 1) {
-    let confirmResult = window.confirm('Вы не авторизованы! Хотите войти в свой аккаунт? Не бойтесь, ваши торты не пропадут в корзине.')
-    if (confirmResult == true) window.location.href = 'sign-in.php';
+  let carts = JSON.parse(localStorage.getItem('carts')) || [];
+  if (carts.length < 1) {
+    alert('Корзина пуста! Добавьте торты в корзину перед оформлением заказа.')
   } else {
-    let carts = JSON.parse(localStorage.getItem('carts')) || [];
-    if (carts.length < 1) {
-      alert('Корзина пуста! Добавьте торты в корзину перед оформлением заказа.')
+    if (Object.keys(userId).length < 1) {
+      let confirmResult = window.confirm('Вы не авторизованы! Хотите войти в свой аккаунт? Не бойтесь, ваши торты не пропадут в корзине.')
+      if (confirmResult == true) window.location.href = 'sign-in.php';
     } else {
       type = 1
       orderPopup.classList.add("popup_active");
@@ -189,9 +189,9 @@ function orderRadioChange(e) {
       if (label.getAttribute('for') == 'select' ||
         label.getAttribute('for') == 'address' ||
         label.getAttribute('for') == 'number') {
-          label.querySelector('.form__input').setAttribute('disabled', '');
-          label.querySelector('.form__input').classList.remove('_required');
-          label.style.display = 'none';      
+        label.querySelector('.form__input').setAttribute('disabled', '');
+        label.querySelector('.form__input').classList.remove('_required');
+        label.style.display = 'none';
       }
     });
     typeText.style.display = 'none';
@@ -203,11 +203,11 @@ function orderRadioChange(e) {
   if (e.target.value == 'Доставка') {
     labels.forEach(label => {
       if (label.getAttribute('for') == 'select' ||
-      label.getAttribute('for') == 'address' ||
-      label.getAttribute('for') == 'number') {
+        label.getAttribute('for') == 'address' ||
+        label.getAttribute('for') == 'number') {
         label.querySelector('.form__input').removeAttribute('disabled');
         label.querySelector('.form__input').classList.add('_required');
-        label.style.display = 'block';      
+        label.style.display = 'block';
       }
     });
     typeText.style.display = 'block';
